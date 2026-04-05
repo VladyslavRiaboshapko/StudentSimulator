@@ -1,5 +1,5 @@
-using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Encodings.Web;
 using StudentSimulator.Data.PayloadData;
 using StudentSimulator.University.Practises.InterectiveTypes;
 
@@ -34,6 +34,7 @@ namespace StudentSimulator.University.Practises
 
             if(PractiseIsPassed(practiseData, correctAnswers))
             {
+                practiseData.IsPassed = true;
                 UpdatePractiseData(practiseData);
             }
         }
@@ -194,7 +195,6 @@ namespace StudentSimulator.University.Practises
 
             if(practiseData.Questions.Count == correctAnswers)
             {
-                practiseData.IsPassed = true;
                 return true;
             }
 

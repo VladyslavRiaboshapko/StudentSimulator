@@ -13,6 +13,12 @@ namespace StudentSimulator.University.Lectures
                 throw new ArgumentException("There is no lecture with that number!");
             } 
 
+            LecturesPayload lecture = LoadLecture(name, num);
+            Console.WriteLine(lecture.Text);
+        }
+
+        private static LecturesPayload LoadLecture(string name, int num)
+        {
             string text = File.ReadAllText($"Data/LecturesData.json");
             List<LecturesPayload> lectures = JsonSerializer.Deserialize<List<LecturesPayload>>(text, new JsonSerializerOptions {WriteIndented = true});
             
@@ -20,10 +26,11 @@ namespace StudentSimulator.University.Lectures
             {
                 if(lectures[i].Name == name && lectures[i].Number == num)
                 {
-                    Console.WriteLine(lectures[i].Text);
-                    return;
+                    return lectures[i];
                 }
             }
+
+            throw new ArgumentException("Load lecture is impossible!");
         }
     }
 }

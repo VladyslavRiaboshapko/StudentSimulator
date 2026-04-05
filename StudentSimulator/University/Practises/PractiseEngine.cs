@@ -1,4 +1,5 @@
 using System.Text.Json;
+using StudentSimulator.Data.PayloadData;
 using StudentSimulator.University.Practises.InterectiveTypes;
 
 namespace StudentSimulator.University.Practises
@@ -7,7 +8,7 @@ namespace StudentSimulator.University.Practises
     {
         public static void RunPractise(string name, int num)
         {
-            PractiseData practiseData = GetRequiredPractise(name, num);
+            PractisesPayload practiseData = GetRequiredPractise(name, num);
             int correctAnswers = 0;
 
             for(int i = 0; i < practiseData.Questions.Count; i++)
@@ -20,7 +21,7 @@ namespace StudentSimulator.University.Practises
                 
                 string userInput = Console.ReadLine();
                 Console.WriteLine();
-                
+
                 if(userInput == practiseData.Questions[i].NumOfCorrectOption)
                 {
                     correctAnswers++;
@@ -183,7 +184,7 @@ namespace StudentSimulator.University.Practises
             return arr;
         }
 
-        private static bool PractiseIsPassed(PractiseData practiseData, int correctAnswers)
+        private static bool PractiseIsPassed(PractisesPayload practiseData, int correctAnswers)
         {
             if (practiseData.Questions.Count == correctAnswers)
             {
@@ -193,9 +194,9 @@ namespace StudentSimulator.University.Practises
             return false;
         }
 
-        private static void UpdatePractiseData(PractiseData practiseData)
+        private static void UpdatePractiseData(PractisesPayload practiseData)
         {
-            List<PractiseData> practises = LoadPractiseData(practiseData.Name, practiseData.Number);
+            List<PractisesPayload> practises = LoadPractiseData(practiseData.Name, practiseData.Number);
 
             for(int i = 0; i < practises.Count; i++)
             {
@@ -205,13 +206,13 @@ namespace StudentSimulator.University.Practises
                 }
             }
             
-            string text = JsonSerializer.Serialize<List<PractiseData>>(practises, new JsonSerializerOptions {WriteIndented = true});
-            File.WriteAllText("University/Practises/Data/PractiseData.json", text);
+            string text = JsonSerializer.Serialize<List<PractisesPayload>>(practises, new JsonSerializerOptions {WriteIndented = true});
+            File.WriteAllText("Data/PractisesData.json", text);
         }
 
-        private static PractiseData GetRequiredPractise(string name, int num)
+        private static PractisesPayload GetRequiredPractise(string name, int num)
         {
-            List<PractiseData> practises = LoadPractiseData(name, num);
+            List<PractisesPayload> practises = LoadPractiseData(name, num);
 
             for(int i = 0; i < practises.Count; i++)
             {
@@ -224,10 +225,10 @@ namespace StudentSimulator.University.Practises
             throw new ArgumentException("There is no practise with that name or number!");
         }
 
-        private static List<PractiseData> LoadPractiseData(string name, int num)
+        private static List<PractisesPayload> LoadPractiseData(string name, int num)
         {
-            string text = File.ReadAllText("University/Practises/Data/PractiseData.json");
-            List<PractiseData> practiseData = JsonSerializer.Deserialize<List<PractiseData>>(text, new JsonSerializerOptions {WriteIndented = true});
+            string text = File.ReadAllText("Data/PractisesData.json");
+            List<PractisesPayload> practiseData = JsonSerializer.Deserialize<List<PractisesPayload>>(text, new JsonSerializerOptions {WriteIndented = true});
 
             return practiseData;
         }

@@ -1,4 +1,4 @@
-namespace StudentSimulator.University.Practises
+namespace StudentSimulator.Data.PayloadData
 {
     public class Question
     {

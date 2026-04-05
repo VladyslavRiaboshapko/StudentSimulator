@@ -1,10 +1,9 @@
-﻿using StudentSimulator.University.Practises;
+﻿using StudentSimulator.University.Lectures;
+using StudentSimulator.University.Practises;
 public class Program
 {
     public static void Main(string[] args)
     {
-        PractiseEngine.RunPractise("ADS", 1);
-        PractiseEngine.RunPractise("ADS", 2);
-        PractiseEngine.RunPractise("ADS", 3);
+        Lecture.PrintLecture("Programming", 8);
     }
 }

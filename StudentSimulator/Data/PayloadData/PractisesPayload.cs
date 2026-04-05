@@ -1,6 +1,6 @@
-namespace StudentSimulator.University.Practises
+namespace StudentSimulator.Data.PayloadData
 {
-    public class PractiseData
+    public class PractisesPayload
     {
         public string Name {get; set;}
         public int Number {get; set;}
@@ -10,7 +10,7 @@ namespace StudentSimulator.University.Practises
         public string Instructions {get; set;}
         public bool IsPassed {get; set;}
 
-        public PractiseData(string name, int number, List<Question> questions, string interectiveType, string instructions, bool isPassed = false)
+        public PractisesPayload(string name, int number, List<Question> questions, string interectiveType, string instructions, bool isPassed = false)
         {
             Name = name;
             Number = number;

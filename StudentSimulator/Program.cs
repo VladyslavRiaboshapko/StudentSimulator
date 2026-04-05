@@ -4,6 +4,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Lecture.PrintLecture("Programming", 8);
+        PractiseEngine.RunPractise("ADS", 1);
     }
 }

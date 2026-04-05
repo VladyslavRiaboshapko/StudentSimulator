@@ -1,3 +1,4 @@
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using StudentSimulator.Data.PayloadData;
 using StudentSimulator.University.Practises.InterectiveTypes;
@@ -186,17 +187,23 @@ namespace StudentSimulator.University.Practises
 
         private static bool PractiseIsPassed(PractisesPayload practiseData, int correctAnswers)
         {
-            if (practiseData.Questions.Count == correctAnswers)
+            if(correctAnswers < 1)
+            {
+                throw new ArgumentException("Incorrect number of correct answers!");
+            }
+
+            if(practiseData.Questions.Count == correctAnswers)
             {
                 practiseData.IsPassed = true;
                 return true;
             }
+
             return false;
         }
 
         private static void UpdatePractiseData(PractisesPayload practiseData)
         {
-            List<PractisesPayload> practises = LoadPractiseData(practiseData.Name, practiseData.Number);
+            List<PractisesPayload> practises = LoadPractisesData();
 
             for(int i = 0; i < practises.Count; i++)
             {
@@ -206,13 +213,13 @@ namespace StudentSimulator.University.Practises
                 }
             }
             
-            string text = JsonSerializer.Serialize<List<PractisesPayload>>(practises, new JsonSerializerOptions {WriteIndented = true});
+            string text = JsonSerializer.Serialize<List<PractisesPayload>>(practises, new JsonSerializerOptions {WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping});
             File.WriteAllText("Data/PractisesData.json", text);
         }
 
         private static PractisesPayload GetRequiredPractise(string name, int num)
         {
-            List<PractisesPayload> practises = LoadPractiseData(name, num);
+            List<PractisesPayload> practises = LoadPractisesData();
 
             for(int i = 0; i < practises.Count; i++)
             {
@@ -225,7 +232,7 @@ namespace StudentSimulator.University.Practises
             throw new ArgumentException("There is no practise with that name or number!");
         }
 
-        private static List<PractisesPayload> LoadPractiseData(string name, int num)
+        private static List<PractisesPayload> LoadPractisesData()
         {
             string text = File.ReadAllText("Data/PractisesData.json");
             List<PractisesPayload> practiseData = JsonSerializer.Deserialize<List<PractisesPayload>>(text, new JsonSerializerOptions {WriteIndented = true});

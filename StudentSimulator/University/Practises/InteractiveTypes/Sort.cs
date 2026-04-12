@@ -20,7 +20,7 @@ namespace StudentSimulator.University.Practises.InterectiveTypes
             return array;
         }
 
-        public static int[] InsertationSort(int[] array)
+        public static int[] InsertionSort(int[] array)
         {
             for(int i = 1; i < array.Length; i++)
             {
@@ -111,7 +111,7 @@ namespace StudentSimulator.University.Practises.InterectiveTypes
             for(int i = 0; i < k; i++)
             {
                 int[] temp = buckets[i].ToArray();
-                InsertationSort(temp);
+                InsertionSort(temp);
                 buckets[i] = temp.ToList();
             }
 

@@ -45,10 +45,10 @@ namespace StudentSimulator.University.Practises
             {
                 case "BinarySearch":
                 {
-                    Console.WriteLine("Введіть відсортований масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
-                    Console.WriteLine("Введіть шукане число: ");
+                    Console.WriteLine(": ");
                     int target = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine(Search.BinarySearch(arr, target));
@@ -57,10 +57,10 @@ namespace StudentSimulator.University.Practises
 
                 case "InterpolationSearch":
                 {
-                    Console.WriteLine("Введіть відсортований масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
-                    Console.WriteLine("Введіть шукане число: ");
+                    Console.WriteLine(": ");
                     int target = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine(Search.InterpolationSearch(arr, target));
@@ -69,10 +69,10 @@ namespace StudentSimulator.University.Practises
 
                 case "ExponentialSearch":
                 {
-                    Console.WriteLine("Введіть відсортований масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
-                    Console.WriteLine("Введіть шукане число: ");
+                    Console.WriteLine(": ");
                     int target = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine(Search.ExponentialSearch(arr, target));
@@ -81,7 +81,7 @@ namespace StudentSimulator.University.Practises
 
                 case "BubbleSort":
                 {
-                    Console.WriteLine("Введіть масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
                     arr = Sort.BubbleSort(arr);
@@ -93,12 +93,12 @@ namespace StudentSimulator.University.Practises
                     break;
                 }
 
-                case "InsertationSort":
+                case "InsertionSort":
                 {
-                    Console.WriteLine("Введіть масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
-                    arr = Sort.InsertationSort(arr);
+                    arr = Sort.InsertionSort(arr);
                     foreach(int i in arr)
                     {
                         Console.Write($" {i}");
@@ -109,7 +109,7 @@ namespace StudentSimulator.University.Practises
 
                 case "CombSort":
                 {
-                    Console.WriteLine("Введіть масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
                     arr = Sort.CombSort(arr);
@@ -121,9 +121,23 @@ namespace StudentSimulator.University.Practises
                     break;
                 }
 
+                case "BucketSort":
+                {
+                    Console.WriteLine(": ");
+                    int[] arr = WriteArray();
+
+                    arr = Sort.BucketSort(arr);
+                    foreach(int i in arr)
+                    {
+                        Console.Write($" {i}");
+                    }
+                    
+                    break;
+                }
+
                 case "Recursion":
                 {
-                    Console.WriteLine("Введіть ціле число, якого хочете отримати факторіал: ");
+                    Console.WriteLine(": ");
                     int x = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine(Recursion.Factorial(x));
@@ -133,10 +147,30 @@ namespace StudentSimulator.University.Practises
 
                 case "MergeSort":
                 {
-                    Console.WriteLine("Введіть масив цілих чисел: ");
+                    Console.WriteLine(": ");
                     int[] arr = WriteArray();
 
                     arr = Sort.MergeSort(arr);
+                    foreach(int i in arr)
+                    {
+                        Console.Write($" {i}");
+                    }
+
+                    break;
+                }
+
+                case "QuickSort":
+                {
+                    Console.WriteLine(": ");
+                    int[] arr = WriteArray();
+
+                    Console.WriteLine(": ");
+                    int l = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine(": ");
+                    int r = Convert.ToInt32(Console.ReadLine());
+
+                    arr = Sort.QuickSort(arr, l, r);
+
                     foreach(int i in arr)
                     {
                         Console.Write($" {i}");
@@ -188,7 +222,7 @@ namespace StudentSimulator.University.Practises
 
         private static bool PractiseIsPassed(PractisesPayload practiseData, int correctAnswers)
         {
-            if(correctAnswers < 1)
+            if(correctAnswers < 0)
             {
                 throw new ArgumentException("Incorrect number of correct answers!");
             }

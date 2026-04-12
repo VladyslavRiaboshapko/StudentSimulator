@@ -5,6 +5,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Exam.RunExam("ADS");
+        PractiseEngine.RunPractise("ADS", 7);
     }
 }

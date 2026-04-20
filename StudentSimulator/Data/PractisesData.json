@@ -34,7 +34,7 @@
         "NumOfCorrectOption": "3"
       }
     ],
-    "InterectiveType": "BinarySearch",
+    "InterectiveArgs": ["BinarySearch"],
     "Instructions": "Введіть відсортований масив цілих чисел і шукане число:",
     "IsPassed": false
   },
@@ -73,7 +73,7 @@
         "NumOfCorrectOption": "3"
       }
     ],
-    "InterectiveType": "InterpolationSearch",
+    "InterectiveArgs": ["InterpolationSearch"],
     "Instructions": "Введіть рівномірний масив цілих чисел і шукане число:",
     "IsPassed": false
   },
@@ -112,7 +112,7 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "ExponentialSearch",
+    "InterectiveArgs": ["ExponentialSearch"],
     "Instructions": "Введіть великий відсортований масив цілих чисел і шукане число:",
     "IsPassed": false
   },
@@ -151,7 +151,7 @@
         "NumOfCorrectOption": "3"
       }
     ],
-    "InterectiveType": "BubbleSort",
+    "InterectiveArgs": ["BubbleSort"],
     "Instructions": "Введіть масив цілих чисел:",
     "IsPassed": false
   },
@@ -190,7 +190,7 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "InsertionSort",
+    "InterectiveArgs": ["InsertionSort"],
     "Instructions": "Введіть масив цілих чисел:",
     "IsPassed": false
   },
@@ -229,7 +229,7 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "CombSort",
+    "InterectiveArgs": ["CombSort"],
     "Instructions": "Введіть масив з маленькими цілими числами в кінці:",
     "IsPassed": false
   },
@@ -268,7 +268,7 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "BucketSort",
+    "InterectiveArgs": ["BucketSort"],
     "Instructions": "Введіть масив цілих чисел:",
     "IsPassed": false
   },
@@ -307,7 +307,7 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "Recursion",
+    "InterectiveArgs": ["Recursion"],
     "Instructions": "Введіть число для обчислення факторіала:",
     "IsPassed": false
   },
@@ -346,7 +346,7 @@
         "NumOfCorrectOption": "3"
       }
     ],
-    "InterectiveType": "MergeSort",
+    "InterectiveArgs": ["MergeSort"],
     "Instructions": "Введіть масив цілих чисел:",
     "IsPassed": false
   },
@@ -385,8 +385,104 @@
         "NumOfCorrectOption": "2"
       }
     ],
-    "InterectiveType": "QuickSort",
+    "InterectiveArgs": ["QuickSort"],
     "Instructions": "Введіть масив цілих чисел та індекси лівої та правої частини (межі сортування):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Chemistry",
+    "Number": 1,
+    "Questions": [
+      {
+        "Text": "Які основні продукти фотосинтезу?",
+        "Options": ["Глюкоза та кисень", "Вода та вуглекислий газ", "Азот та водень", "Метан"],
+        "NumOfCorrectOption": "1"
+      },
+      {
+        "Text": "Який пігмент необхідний для поглинання світла під час фотосинтезу?",
+        "Options": ["Гемоглобін", "Меланін", "Хлорофіл", "Каротин"],
+        "NumOfCorrectOption": "3"
+      },
+      {
+        "Text": "В яких органелах клітини відбувається фотосинтез?",
+        "Options": ["Ядро", "Мітохондрії", "Хлоропласти", "Рибосоми"],
+        "NumOfCorrectOption": "3"
+      }
+    ],
+    "InteractiveArgs": ["ChemicalConstructor", "CO2", "H2O", "Світло", "O2", "Correct:1,2,3"],
+    "Instructions": "Зберіть необхідні компоненти для запуску реакції фотосинтезу (введіть номери через пробіл):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Chemistry",
+    "Number": 7,
+    "Questions": [
+      {
+        "Text": "Що таке електроліз?",
+        "Options": ["Змішування речовин", "Розклад речовини під дією електричного струму", "Горіння металів", "Випаровування води"],
+        "NumOfCorrectOption": "2"
+      },
+      {
+        "Text": "Як називається позитивно заряджений електрод?",
+        "Options": ["Катод", "Анод", "Протон", "Іон"],
+        "NumOfCorrectOption": "2"
+      },
+      {
+        "Text": "Куди рухаються катіони під час електролізу?",
+        "Options": ["До анода", "До джерела живлення", "До катода", "Залишаються на місці"],
+        "NumOfCorrectOption": "3"
+      }
+    ],
+    "InteractiveArgs": ["ChemicalConstructor", "Джерело струму", "Електроди", "Електроліт", "Магніт", "Correct:1,2,3"],
+    "Instructions": "Виберіть обладнання, необхідне для проведення електролізу:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Chemistry",
+    "Number": 8,
+    "Questions": [
+      {
+        "Text": "Яка головна ознака реакції нейтралізації?",
+        "Options": ["Виділення газу", "Утворення солі та води", "Зміна кольору на чорний", "Випадання осаду металу"],
+        "NumOfCorrectOption": "2"
+      },
+      {
+        "Text": "Взаємодія яких речовин призводить до нейтралізації?",
+        "Options": ["Метал + Кисень", "Сіль + Вода", "Кислота + Основа (Луг)", "Оксид + Водень"],
+        "NumOfCorrectOption": "3"
+      },
+      {
+        "Text": "Який pH має нейтральний розчин?",
+        "Options": ["0", "14", "7", "5"],
+        "NumOfCorrectOption": "3"
+      }
+    ],
+    "InteractiveArgs": ["ChemicalConstructor", "HCl (Кислота)", "NaOH (Луг)", "Індикатор", "Пісок", "Correct:1,2,3"],
+    "Instructions": "Виберіть реагенти, щоб отримати нейтральний розчин солі:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Chemistry",
+    "Number": 10,
+    "Questions": [
+      {
+        "Text": "Як каталізатор впливає на хімічну реакцію?",
+        "Options": ["Сповільнює її", "Не впливає", "Прискорює її", "Зупиняє її"],
+        "NumOfCorrectOption": "3"
+      },
+      {
+        "Text": "Чи витрачається каталізатор під час реакції?",
+        "Options": ["Так, повністю", "Частково", "Ні, залишається незмінним", "Перетворюється на воду"],
+        "NumOfCorrectOption": "3"
+      },
+      {
+        "Text": "Як називаються біологічні каталізатори?",
+        "Options": ["Гормони", "Вітаміни", "Ферменти (Ензими)", "Амінокислоти"],
+        "NumOfCorrectOption": "3"
+      }
+    ],
+    "InteractiveArgs": ["ChemicalConstructor", "Перекис водню", "MnO2 (Каталізатор)", "Підігрів", "Вода", "Correct:1,2"],
+    "Instructions": "Виберіть речовину та каталізатор для швидкого отримання кисню:",
     "IsPassed": false
   }
 ]

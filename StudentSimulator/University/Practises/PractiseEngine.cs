@@ -30,7 +30,7 @@ namespace StudentSimulator.University.Practises
             }
 
             Console.WriteLine(practiseData.Instructions);
-            RunInteractive(practiseData.InterectiveType);
+            RunInteractive(practiseData.InterectiveArgs);
 
             if(PractiseIsPassed(practiseData, correctAnswers))
             {
@@ -39,9 +39,9 @@ namespace StudentSimulator.University.Practises
             }
         }
 
-        private static void RunInteractive(string interectiveType)
+        private static void RunInteractive(List<string> interectiveArgs)
         {
-            switch(interectiveType)
+            switch(interectiveArgs[0])
             {
                 case "BinarySearch":
                 {

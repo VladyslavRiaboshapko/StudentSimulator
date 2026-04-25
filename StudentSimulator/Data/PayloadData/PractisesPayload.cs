@@ -6,16 +6,16 @@ namespace StudentSimulator.Data.PayloadData
         public int Number {get; set;}
 
         public List<Question> Questions {get; set;}
-        public List<string> InterectiveArgs {get; set;}
+        public List<string> InteractiveArgs {get; set;}
         public string Instructions {get; set;}
         public bool IsPassed {get; set;}
 
-        public PractisesPayload(string name, int number, List<Question> questions, List<string> interectiveArgs, string instructions, bool isPassed = false)
+        public PractisesPayload(string name, int number, List<Question> questions, List<string> interactiveArgs, string instructions, bool isPassed = false)
         {
             Name = name;
             Number = number;
             Questions = questions;
-            InterectiveArgs = interectiveArgs;
+            InteractiveArgs = interactiveArgs;
             Instructions = instructions;
             IsPassed = isPassed;
         }

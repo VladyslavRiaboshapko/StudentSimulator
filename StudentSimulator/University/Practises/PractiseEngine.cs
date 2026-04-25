@@ -30,7 +30,7 @@ namespace StudentSimulator.University.Practises
             }
 
             Console.WriteLine(practiseData.Instructions);
-            RunInteractive(practiseData.InterectiveArgs);
+            RunInteractive(practiseData.InteractiveArgs);
 
             if(PractiseIsPassed(practiseData, correctAnswers))
             {
@@ -178,6 +178,62 @@ namespace StudentSimulator.University.Practises
 
                     break;
                 }
+                case "ChemicalConstructor" :
+                {
+                    for(int i = 1; i < interectiveArgs.Count - 1; i++)
+                    {
+                        Console.Write($"{interectiveArgs[i]} ");
+                    }
+                    List<int> correctIndices = ParseCorrectIndices(interectiveArgs[interectiveArgs.Count - 1]);
+                    Console.WriteLine();
+                    Console.WriteLine("Введіть правильні відповіді: ");
+                    int count = 0;
+                    int[] userInput = WriteArray();
+                    for(int i = 0; i < correctIndices.Count; i++)
+                    {
+                        if (i < userInput.Length && correctIndices[i] == userInput[i])
+                        {
+                            count++;
+                        }
+                    }
+                    if(count == correctIndices.Count)
+                    {
+                        Console.WriteLine("Молодець!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неправильно!");
+                        foreach(int i in correctIndices)
+                        {
+                            Console.Write($"{i} ");
+                        }
+                    }
+                    break;
+                }
+                case "PhysicsEngine":
+                {
+                    string physicsVariable = interectiveArgs[1]; 
+                    string correctValueStr = interectiveArgs[interectiveArgs.Count - 1];
+
+                    Console.WriteLine($"\n--- Фізичний симулятор ---");
+                    Console.WriteLine($"Завдання: Встановіть правильне значення для: {physicsVariable}");
+                    Console.Write("Ваша відповідь: ");
+
+                    string? rawInput = Console.ReadLine();
+                    if (rawInput == null) break;
+
+                    // Використовуємо власну логіку порівняння
+                    if (IsPhysicsAnswerCorrect(rawInput, correctValueStr))
+                    {
+                        Console.WriteLine("✅ Правильно! Калібрування системи завершено успішно.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"❌ Помилка! Система вийшла з ладу.");
+                        Console.WriteLine($"Правильне значення мало бути: {correctValueStr}");
+                    }
+                    break;
+                }
             }
         }
 
@@ -272,6 +328,52 @@ namespace StudentSimulator.University.Practises
             List<PractisesPayload> practiseData = JsonSerializer.Deserialize<List<PractisesPayload>>(text, new JsonSerializerOptions {WriteIndented = true});
 
             return practiseData;
+        }
+
+        private static List<int> ParseCorrectIndices(string correctTag)
+        {
+            List<int> indices = new List<int>();
+
+            for (int i = 8; i < correctTag.Length; i++)
+            {
+                char c = correctTag[i];
+
+                if (c >= '0' && c <= '9')
+                {
+                    int value = c - '0'; 
+                    indices.Add(value - 1);
+                }
+            }
+
+            return indices;
+        }
+
+        private static bool IsPhysicsAnswerCorrect(string input, string target)
+        {
+            int i = 0;
+            int j = 0;
+
+            while (i < input.Length && input[i] == ' ') i++;
+            while (j < target.Length && target[j] == ' ') j++;
+
+            while (i < input.Length && j < target.Length)
+            {
+                char charInput = input[i];
+                char charTarget = target[j];
+
+                if (charInput == ',') charInput = '.';
+                if (charTarget == ',') charTarget = '.';
+
+                if (charInput != charTarget) return false;
+
+                i++;
+                j++;
+            }
+
+            while (i < input.Length && input[i] == ' ') i++;
+            while (j < target.Length && target[j] == ' ') j++;
+
+            return i == input.Length && j == target.Length;
         }
     }
 }

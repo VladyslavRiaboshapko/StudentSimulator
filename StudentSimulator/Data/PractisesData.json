@@ -752,5 +752,365 @@
     "InteractiveArgs": ["PhysicsEngine", "ReflectionAngle", "45"],
     "Instructions": "Промінь падає під кутом 45 градусів. Під яким кутом він відіб'ється від дзеркала?",
     "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 1,
+    "Questions": [
+      { "Text": "Який допоміжний дієслово використовується в Present Continuous?", "Options": ["Do/Does", "Am/Is/Are", "Have/Has", "Did"], "NumOfCorrectOption": "2" },
+      { "Text": "Виберіть правильну форму: 'She ___ TV right now.'", "Options": ["watch", "watches", "is watching", "watched"], "NumOfCorrectOption": "3" },
+      { "Text": "Коли ми використовуємо Present Continuous?", "Options": ["Постійні дії", "Дії, що відбуваються зараз", "Минулі події", "Загальновідомі факти"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "She", "is", "coding", "now", "Correct:1,2,3,4"],
+    "Instructions": "Складіть речення в Present Continuous (введіть номери слів):",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 2,
+    "Questions": [
+      { "Text": "Який час описує регулярні дії?", "Options": ["Present Simple", "Present Continuous", "Past Simple", "Future Simple"], "NumOfCorrectOption": "1" },
+      { "Text": "Виберіть правильне: 'He ___ to the gym every day.'", "Options": ["go", "goes", "is going", "went"], "NumOfCorrectOption": "2" },
+      { "Text": "Яке закінчення додається до дієслова у 3-й особі однини (He/She/It)?", "Options": ["-ing", "-ed", "-s/-es", "-en"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "He", "gym", "visits", "the", "Correct:1,3,4,2"],
+    "Instructions": "Складіть речення в Present Simple:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 3,
+    "Questions": [
+      { "Text": "Яка форма дієслова 'be' у Past Simple для 'I'?", "Options": ["were", "is", "was", "be"], "NumOfCorrectOption": "3" },
+      { "Text": "Виберіть правильне: 'They ___ football yesterday.'", "Options": ["play", "played", "playing", "plays"], "NumOfCorrectOption": "2" },
+      { "Text": "Яке слово вказує на Past Simple?", "Options": ["Now", "Always", "Yesterday", "Tomorrow"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "I", "a", "movie", "watched", "Correct:1,4,2,3"],
+    "Instructions": "Складіть речення в Past Simple:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 4,
+    "Questions": [
+      { "Text": "Що використовується для утворення Future Simple?", "Options": ["am/is/are", "will", "going to", "was/were"], "NumOfCorrectOption": "2" },
+      { "Text": "Виберіть правильне: 'I ___ call you later.'", "Options": ["will", "am", "do", "going"], "NumOfCorrectOption": "1" },
+      { "Text": "Яка форма дієслова йде після 'will'?", "Options": ["V-ing", "V2", "Інфінітив без to", "V-s"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "We", "will", "the", "exam", "pass", "Correct:1,2,5,3,4"],
+    "Instructions": "Складіть речення в Future Simple:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 5,
+    "Questions": [
+      { "Text": "Яка формула Present Perfect?", "Options": ["have/has + V3", "am/is/are + V-ing", "had + V3", "will + V1"], "NumOfCorrectOption": "1" },
+      { "Text": "Виберіть правильне: 'I have ___ this book.'", "Options": ["readed", "read", "reading", "reads"], "NumOfCorrectOption": "2" },
+      { "Text": "Яке слово часто вказує на Present Perfect?", "Options": ["Yesterday", "Already", "Last week", "In 1999"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "They", "finished", "have", "tasks", "Correct:1,3,2,4"],
+    "Instructions": "Складіть речення в Present Perfect:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 6,
+    "Questions": [
+      { "Text": "Який модальний глагол виражає здатність?", "Options": ["must", "can", "should", "may"], "NumOfCorrectOption": "2" },
+      { "Text": "Виберіть правильне: 'You ___ study hard to pass.'", "Options": ["can", "should", "may", "might"], "NumOfCorrectOption": "2" },
+      { "Text": "Який глагол виражає сувору заборону?", "Options": ["can't", "mustn't", "shouldn't", "don't"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "You", "English", "speak", "can", "Correct:1,4,3,2"],
+    "Instructions": "Складіть речення з модальним дієсловом:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 7,
+    "Questions": [
+      { "Text": "Що таке Passive Voice?", "Options": ["Коли дію виконує підмет", "Коли дія виконується НАД підметом", "Минулий час", "Майбутній час"], "NumOfCorrectOption": "2" },
+      { "Text": "Формула Passive Voice?", "Options": ["be + V3", "have + V3", "V-ing", "will + V1"], "NumOfCorrectOption": "1" },
+      { "Text": "The cake ___ by my sister.", "Options": ["ate", "is eating", "was eaten", "has eaten"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "Code", "is", "written", "by", "me", "Correct:1,2,3,4,5"],
+    "Instructions": "Складіть речення в пасивному стані:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 8,
+    "Questions": [
+      { "Text": "Яке слово використовується в First Conditional (умова)?", "Options": ["if", "when", "while", "during"], "NumOfCorrectOption": "1" },
+      { "Text": "Якщо я вчуся (Present), я здам (Future). Це...", "Options": ["Zero Conditional", "First Conditional", "Second Conditional", "Past Simple"], "NumOfCorrectOption": "2" },
+      { "Text": "If it rains, we ___ stay home.", "Options": ["will", "would", "are", "did"], "NumOfCorrectOption": "1" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "If", "I", "study", "I", "pass", "will", "Correct:1,2,3,4,6,5"],
+    "Instructions": "Складіть умовне речення (First Conditional):",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 9,
+    "Questions": [
+      { "Text": "Яке дієслово є герундієм?", "Options": ["to play", "playing", "played", "plays"], "NumOfCorrectOption": "2" },
+      { "Text": "Після яких слів часто йде герундій?", "Options": ["enjoy, finish, mind", "want, hope, plan", "will, can, must", "do, does, did"], "NumOfCorrectOption": "1" },
+      { "Text": "I enjoy ___ code.", "Options": ["write", "to write", "writing", "wrote"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "She", "enjoys", "in", "the", "gym", "working out", "Correct:1,2,6,3,4,5"],
+    "Instructions": "Складіть речення з герундієм:",
+    "IsPassed": false
+  },
+  {
+    "Name": "English",
+    "Number": 10,
+    "Questions": [
+      { "Text": "Що таке Comparative degree (вищий ступінь) для 'fast'?", "Options": ["fastest", "faster", "more fast", "fast"], "NumOfCorrectOption": "2" },
+      { "Text": "Як сказати 'найкращий'?", "Options": ["gooder", "better", "the best", "goodest"], "NumOfCorrectOption": "3" },
+      { "Text": "C# is ___ than Python (для вас).", "Options": ["difficult", "difficultest", "more difficult", "difficulter"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["SentenceBuilder", "Python", "is", "than", "easier", "C#", "Correct:1,2,4,3,5"],
+    "Instructions": "Складіть порівняльне речення:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 1,
+    "Questions": [
+      { "Text": "Що таке дискримінант квадратного рівняння?", "Options": ["b^2 - 4ac", "2a + b", "sqrt(a+b)", "ax^2"], "NumOfCorrectOption": "1" },
+      { "Text": "Скільки коренів має рівняння, якщо D > 0?", "Options": ["Один", "Жодного", "Два", "Безліч"], "NumOfCorrectOption": "3" },
+      { "Text": "Яка геометрична фігура є графіком квадратичної функції?", "Options": ["Пряма", "Парабола", "Гіпербола", "Коло"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "x^2 - 5x + 6 = 0. Знайдіть більший корінь:", "3"],
+    "Instructions": "Розв'яжіть рівняння та введіть число:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 2,
+    "Questions": [
+      { "Text": "Чому дорівнює сума кутів трикутника?", "Options": ["90°", "180°", "360°", "270°"], "NumOfCorrectOption": "2" },
+      { "Text": "Як називається сторона прямокутного трикутника, що лежить проти прямого кута?", "Options": ["Катет", "Гіпотенуза", "Медіана", "Бісектриса"], "NumOfCorrectOption": "2" },
+      { "Text": "Теорема Піфагора виглядає так:", "Options": ["a + b = c", "a^2 - b^2 = c^2", "a^2 + b^2 = c^2", "2a + 2b = c"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "Катети дорівнюють 3 та 4. Знайдіть гіпотенузу c:", "5"],
+    "Instructions": "Використовуйте теорему Піфагора:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 3,
+    "Questions": [
+      { "Text": "Чому дорівнює log2(8)?", "Options": ["2", "4", "3", "16"], "NumOfCorrectOption": "3" },
+      { "Text": "Логарифм — це...", "Options": ["Число", "Показник степеня", "Основа", "Корінь"], "NumOfCorrectOption": "2" },
+      { "Text": "Яка основа у натурального логарифма (ln)?", "Options": ["10", "2", "e (число Ейлера)", "0"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "log3(x) = 2. Чому дорівнює x?", "9"],
+    "Instructions": "Знайдіть значення змінної:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 4,
+    "Questions": [
+      { "Text": "sin(90°) дорівнює:", "Options": ["0", "1", "0.5", "-1"], "NumOfCorrectOption": "2" },
+      { "Text": "Відношення протилежного катета до гіпотенузи — це:", "Options": ["Косинус", "Тангенс", "Синус", "Котангенс"], "NumOfCorrectOption": "3" },
+      { "Text": "Основна тригонометрична тотожність:", "Options": ["sin + cos = 1", "sin^2 + cos^2 = 1", "tg * ctg = 0", "sin/cos = ctg"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "cos(60°). Введіть значення у вигляді 0.5 чи 0:", "0.5"],
+    "Instructions": "Введіть числове значення:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 5,
+    "Questions": [
+      { "Text": "Похідна від константи (числа) дорівнює:", "Options": ["1", "0", "Самій константі", "x"], "NumOfCorrectOption": "2" },
+      { "Text": "Похідна від x^2 дорівнює:", "Options": ["x", "2", "2x", "x^3"], "NumOfCorrectOption": "3" },
+      { "Text": "Фізичний зміст першої похідної від шляху — це:", "Options": ["Прискорення", "Маса", "Швидкість", "Сила"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "Знайдіть похідну функції f(x)=5x в точці x=10:", "5"],
+    "Instructions": "Введіть результат обчислення:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 6,
+    "Questions": [
+      { "Text": "Яка система числення використовується в програмуванні за замовчуванням?", "Options": ["Десяткова", "Двійкова", "Шістнадцяткова", "Вісімкова"], "NumOfCorrectOption": "2" },
+      { "Text": "Число 10 у двійковій системі — це:", "Options": ["1", "2", "3", "0"], "NumOfCorrectOption": "2" },
+      { "Text": "Скільки біт в одному байті?", "Options": ["4", "8", "16", "10"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "Переведіть двійкове число 101 у десяткову систему:", "5"],
+    "Instructions": "Введіть десяткове число:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 7,
+    "Questions": [
+      { "Text": "Імовірність вірогідної події дорівнює:", "Options": ["0", "0.5", "1", "100"], "NumOfCorrectOption": "3" },
+      { "Text": "Яка ймовірність випадіння 'решки' при підкиданні монети?", "Options": ["1", "0", "0.5", "0.2"], "NumOfCorrectOption": "3" },
+      { "Text": "Кидаємо гральний кубик. Яка ймовірність випадіння цифри 7?", "Options": ["1/6", "0", "1", "0.5"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "У кошику 2 білих і 3 чорних кулі. Яка ймовірність витягти білу? (у форматі 0.4):", "0.4"],
+    "Instructions": "Введіть імовірність:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 8,
+    "Questions": [
+      { "Text": "Як називається впорядкована таблиця чисел?", "Options": ["Вектор", "Матриця", "Граф", "Черга"], "NumOfCorrectOption": "2" },
+      { "Text": "Яку матрицю можна множити саму на себе?", "Options": ["Будь-яку", "Квадратну", "Тільки нульову", "Тільки одиничну"], "NumOfCorrectOption": "2" },
+      { "Text": "Одинична матриця має на головній діагоналі:", "Options": ["0", "Нулі", "Одиниці", "Будь-які числа"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "Визначник матриці [[2,0],[0,2]] дорівнює:", "4"],
+    "Instructions": "Обчисліть визначник (det):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 9,
+    "Questions": [
+      { "Text": "Граф складається з вершин та...", "Options": ["Ліній", "Ребер", "Точок", "Стрілок"], "NumOfCorrectOption": "2" },
+      { "Text": "Граф, у якому ребра мають напрямок, називається:", "Options": ["Зв'язним", "Орієнтованим", "Простим", "Повним"], "NumOfCorrectOption": "2" },
+      { "Text": "Як називається шлях у графі, що повертається у початкову точку?", "Options": ["Міст", "Цикл", "Дерево", "Корінь"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "У повному графі з 3 вершинами скільки ребер?", "3"],
+    "Instructions": "Введіть кількість ребер:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Math",
+    "Number": 10,
+    "Questions": [
+      { "Text": "Середнє арифметичне чисел 2, 4, 6 дорівнює:", "Options": ["3", "4", "5", "6"], "NumOfCorrectOption": "2" },
+      { "Text": "Значення, яке зустрічається в наборі даних найчастіше — це:", "Options": ["Медіана", "Мода", "Дисперсія", "Відхилення"], "NumOfCorrectOption": "2" },
+      { "Text": "Що показує медіана?", "Options": ["Суму всіх чисел", "Середину впорядкованого списку", "Найбільше число", "Різницю між числами"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["EquationSolver", "Знайдіть медіану набору: 1, 3, 10. Введіть число:", "3"],
+    "Instructions": "Введіть медіану:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 1,
+    "Questions": [
+      { "Text": "Який тип даних використовується для цілих чисел у C#?", "Options": ["string", "int", "bool", "double"], "NumOfCorrectOption": "2" },
+      { "Text": "Який символ використовується для завершення інструкції (команди)?", "Options": [".", ":", ";", ","], "NumOfCorrectOption": "3" },
+      { "Text": "Яка функція виводить текст у консоль з переходом на новий рядок?", "Options": ["Console.Write()", "Console.ReadLine()", "Console.WriteLine()", "Console.Clear()"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "double price = 19.99; — Який тип даних краще для цілих чисел?", "int"],
+    "Instructions": "Введіть назву типу даних:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 2,
+    "Questions": [
+      { "Text": "Який оператор використовується для перевірки рівності?", "Options": ["=", "==", "!=", "=>"], "NumOfCorrectOption": "2" },
+      { "Text": "Що поверне вираз (5 > 3 && 2 < 1)?", "Options": ["true", "false", "null", "error"], "NumOfCorrectOption": "2" },
+      { "Text": "Яка конструкція дозволяє обрати один з багатьох варіантів?", "Options": ["if", "while", "switch", "for"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "if (x % 2 == 0) — Що перевіряє ця умова?", "парність"],
+    "Instructions": "Введіть одним словом (наприклад, 'парність'):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 3,
+    "Questions": [
+      { "Text": "Який цикл використовується, коли кількість ітерацій відома заздалегідь?", "Options": ["while", "do-while", "for", "foreach"], "NumOfCorrectOption": "3" },
+      { "Text": "Як вийти з циклу достроково?", "Options": ["stop", "exit", "break", "return"], "NumOfCorrectOption": "3" },
+      { "Text": "Що таке ітерація?", "Options": ["Помилка", "Один повтор циклу", "Тип даних", "Змінна"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "for (int i=0; i<3; i++) { ... } — Скільки разів виконається цикл?", "3"],
+    "Instructions": "Введіть число ітерацій:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 4,
+    "Questions": [
+      { "Text": "З якого індексу починаються масиви в C#?", "Options": ["1", "0", "-1", "з будь-якого"], "NumOfCorrectOption": "2" },
+      { "Text": "Як отримати довжину масиву 'arr'?", "Options": ["arr.Size()", "arr.Length", "arr.Count", "arr.Long"], "NumOfCorrectOption": "2" },
+      { "Text": "Масив — це...", "Options": ["Одна змінна", "Колекція однотипних елементів", "Метод", "Клас"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "int[] n = {10, 20, 30}; — Чому дорівнює n[1]?", "20"],
+    "Instructions": "Введіть значення елемента:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 5,
+    "Questions": [
+      { "Text": "Що означає 'void' перед назвою методу?", "Options": ["Метод повертає число", "Метод нічого не повертає", "Метод приватний", "Метод статичний"], "NumOfCorrectOption": "2" },
+      { "Text": "Яке ключове слово повертає результат з методу?", "Options": ["give", "send", "return", "back"], "NumOfCorrectOption": "3" },
+      { "Text": "Параметри методу записуються в...", "Options": ["Квадратних дужках", "Фігурних дужках", "Круглих дужках", "Лапках"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "static ___ SayHello() { return \"Hi\"; } — Який тип повернення?", "string"],
+    "Instructions": "Введіть пропущене слово (тип):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 6,
+    "Questions": [
+      { "Text": "Що таке інкапсуляція?", "Options": ["Спадкування", "Приховування внутрішніх даних", "Створення об'єктів", "Видалення пам'яті"], "NumOfCorrectOption": "2" },
+      { "Text": "Який модифікатор доступу робить поле видимим тільки в межах класу?", "Options": ["public", "internal", "private", "protected"], "NumOfCorrectOption": "3" },
+      { "Text": "Що таке 'Constructor'?", "Options": ["Метод для видалення об'єкта", "Спеціальний метод для створення об'єкта", "Тип масиву", "Змінна"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "Student s = ___ Student(); — Яке слово створює об'єкт?", "new"],
+    "Instructions": "Введіть ключове слово:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 7,
+    "Questions": [
+      { "Text": "Яке ключове слово використовується для спадкування в C#?", "Options": ["extends", ":", "inherits", "base"], "NumOfCorrectOption": "2" },
+      { "Text": "Як звернутися до базового класу з нащадка?", "Options": ["this", "super", "base", "parent"], "NumOfCorrectOption": "3" },
+      { "Text": "Чи можна в C# успадкувати клас від декількох класів одночасно?", "Options": ["Так", "Ні", "Тільки через інтерфейси", "Тільки в .NET 10"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "class Dog : Animal — Як називається Animal для Dog?", "базовий"],
+    "Instructions": "Введіть термін (наприклад, 'базовий' чи 'батьківський'):",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 8,
+    "Questions": [
+      { "Text": "Який блок використовується для обробки помилок?", "Options": ["try-catch", "if-else", "for-each", "lock-unlock"], "NumOfCorrectOption": "1" },
+      { "Text": "Як називається помилка, що виникає під час виконання програми?", "Options": ["Warning", "Exception", "Syntax error", "Bug"], "NumOfCorrectOption": "2" },
+      { "Text": "Який блок виконується завжди (і з помилкою, і без)?", "Options": ["try", "catch", "finally", "stop"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "catch (___ ex) — Який базовий клас усіх помилок?", "Exception"],
+    "Instructions": "Введіть назву класу:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 9,
+    "Questions": [
+      { "Text": "Яка структура даних працює за принципом LIFO (Last In, First Out)?", "Options": ["Queue", "List", "Stack", "Dictionary"], "NumOfCorrectOption": "3" },
+      { "Text": "Яка колекція зберігає пари 'ключ-значення'?", "Options": ["Array", "Dictionary", "Stack", "HashSet"], "NumOfCorrectOption": "2" },
+      { "Text": "Який метод додає елемент у кінець списку List?", "Options": ["Push()", "Insert()", "Add()", "Put()"], "NumOfCorrectOption": "3" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "List<int> l = new(); l.Add(5); l.Add(1); — Який l[0]?", "5"],
+    "Instructions": "Введіть значення першого елемента:",
+    "IsPassed": false
+  },
+  {
+    "Name": "Programming",
+    "Number": 10,
+    "Questions": [
+      { "Text": "Що таке JSON?", "Options": ["Мова програмування", "Формат обміну даними", "База даних", "Графічний редактор"], "NumOfCorrectOption": "2" },
+      { "Text": "Як називається процес перетворення об'єкта у рядок (наприклад, JSON)?", "Options": ["Parsing", "Serialization", "Decoding", "Refactoring"], "NumOfCorrectOption": "2" },
+      { "Text": "Яка бібліотека в C# за замовчуванням працює з JSON?", "Options": ["System.IO", "System.Text.Json", "Newtonsoft.Json", "System.Linq"], "NumOfCorrectOption": "2" }
+    ],
+    "InteractiveArgs": ["CodeFixer", "JsonSerializer.Serialize(obj) — Що ми отримаємо на виході?", "рядок"],
+    "Instructions": "Введіть тип результату (одним словом):",
+    "IsPassed": false
   }
 ]

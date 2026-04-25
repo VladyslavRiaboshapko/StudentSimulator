@@ -234,6 +234,81 @@ namespace StudentSimulator.University.Practises
                     }
                     break;
                 }
+                case "SentenceBuilder":
+                {
+                    for (int i = 1; i < interectiveArgs.Count - 1; i++)
+                    {
+                        Console.Write($"[{i}] {interectiveArgs[i]}  ");
+                    }
+                    Console.WriteLine("\nСкладіть речення, ввівши номери слів через пробіл:");
+
+                    List<int> correctIndices = ParseCorrectIndices(interectiveArgs[interectiveArgs.Count - 1]);
+                    int[] userInput = WriteArray();
+
+                    int correctCount = 0;
+                    if (userInput.Length == correctIndices.Count)
+                    {
+                        for (int i = 0; i < correctIndices.Count; i++)
+                        {
+                            if (userInput[i] == correctIndices[i]) correctCount++;
+                        }
+                    }
+
+                    if (correctCount == correctIndices.Count)
+                    {
+                        Console.WriteLine("Perfect! Your grammar is correct.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect. Try to review the word order.");
+                    }
+                    break;
+                }
+                case "EquationSolver":
+                {
+                    string formula = interectiveArgs[1]; 
+                    string targetAnswer = interectiveArgs[interectiveArgs.Count - 1];
+
+                    Console.WriteLine($"\n--- Математичний практикум ---");
+                    Console.WriteLine($"Завдання: {formula}");
+                    Console.Write("Ваша відповідь: ");
+
+                    string? userInput = Console.ReadLine();
+                    if (userInput == null) break;
+
+                    if (IsPhysicsAnswerCorrect(userInput, targetAnswer))
+                    {
+                        Console.WriteLine("✅ Правильно! Обчислення вірні.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"❌ Помилка в розрахунках.");
+                        Console.WriteLine($"Правильна відповідь: {targetAnswer}");
+                    }
+                    break;
+                }
+                case "CodeFixer":
+                {
+                    string snippet = interectiveArgs[1]; 
+                    string targetToken = interectiveArgs[interectiveArgs.Count - 1];
+
+                    Console.WriteLine($"\n--- Programming Lab: Code Analysis ---");
+                    Console.WriteLine($"Code/Task: {snippet}");
+                    Console.Write("Your answer (keyword/value): ");
+
+                    string? userInput = Console.ReadLine();
+                    if (userInput == null) break;
+
+                    if (IsPhysicsAnswerCorrect(userInput.ToLower(), targetToken.ToLower()))
+                    {
+                        Console.WriteLine("✅ Correct! Logic verified.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"❌ Compilation Error. Expected: {targetToken}");
+                    }
+                    break;
+                }
             }
         }
 

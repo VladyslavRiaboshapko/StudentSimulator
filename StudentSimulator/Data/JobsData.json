@@ -1,0 +1,130 @@
+{
+  "Barista": [
+    {   
+        "Id": 1, 
+        "Target": "Latte", 
+        "Actions": ["Grind", "Espresso", "Steam Milk", "Pour"] 
+    },
+    { 
+        "Id": 2, 
+        "Target": "Americano", 
+        "Actions": ["Grind", "Espresso", "Add Water"] 
+    },
+    {
+      "Id": 3,
+      "Target": "Cappuccino",
+      "Actions": ["Grind", "Espresso", "Steam Milk", "Foam Milk", "Pour"]
+    },
+    {
+      "Id": 4,
+      "Target": "Flat White",
+      "Actions": ["Grind", "Double Espresso", "Lightly Frosted Milk", "Pour"]
+    },
+    {
+      "Id": 5,
+      "Target": "Mocha",
+      "Actions": ["Grind", "Chocolate Syrup", "Espresso", "Steam Milk", "Whipped Cream"]
+    }
+  ],
+  "Loader": [
+    {
+      "Id": 1,
+      "ClientName": "Маркетопт",
+      "TotalWeight": 300,
+      "Members": 1,
+      "ItemsToLoad": [45, 12, 78, 34, 90, 41]
+    },
+    {
+      "Id": 2,
+      "ClientName": "АТБ",
+      "TotalWeight": 800,
+      "Members": 2,
+      "ItemsToLoad": [150, 200, 50, 100, 300]
+    },
+    {
+      "Id": 3,
+      "ClientName": "Нова Пошта",
+      "TotalWeight": 250,
+      "Members": 1,
+      "ItemsToLoad": [15, 25, 40, 10, 35, 50, 20, 55]
+    },
+    {
+      "Id": 4,
+      "ClientName": "Епіцентр",
+      "TotalWeight": 1200,
+      "Members": 3,
+      "ItemsToLoad": [250, 300, 150, 400, 100]
+    },
+    {
+      "Id": 5,
+      "ClientName": "Сільпо",
+      "TotalWeight": 500,
+      "Members": 2,
+      "ItemsToLoad": [60, 80, 120, 40, 90, 110]
+    }
+  ],
+  "FoodCourier": [
+    { 
+      "Id": 1, 
+      "Distance": 1500, 
+      "ClientName": "Іван", 
+      "Items": ["Pizza", "Cola"] 
+    },
+    {
+      "Id": 2,
+      "Distance": 1200,
+      "ClientName": "Олег",
+      "Items": ["Big Mac", "Fries", "Cola"]
+    },
+    {
+      "Id": 3,
+      "Distance": 2500,
+      "ClientName": "Maрина",
+      "Items": ["Sushi Set", "Miso Soup"]
+    },
+    {
+      "Id": 4,
+      "Distance": 800,
+      "ClientName": "Дмитро",
+      "Items": ["Schweppes", "Burrito"]
+    },
+    {
+      "Id": 5,
+      "Distance": 1120,
+      "ClientName": "Анастасія",
+      "Items": ["Садочок", "Banana", "Salmon"]
+    }
+  ],
+  "Consultant": [
+    {
+      "Id": 1,
+      "ClientName": "Ігор",
+      "ClientType": "Student",
+      "Complexity": 3,
+      "MinProfit": 50,
+      "Duration": 2,
+      "Problem": "Комп'ютер постійно перегрівається під час ігор.",
+      "CorrectAnswer": "Чистка від пилу та заміна термопасти"
+    },
+    {
+      "Id": 2,
+      "ClientName": "Кав'ярня",
+      "ClientType": "SmallBusiness",
+      "Complexity": 7,
+      "MinProfit": 200,
+      "Duration": 4,
+      "Problem": "Клієнти заходять, дивляться меню і йдуть, нічого не купуючи.",
+      "CorrectAnswer": "Оптимізація цін та впровадження програми лояльності"
+    },
+    {
+      "Id": 3,
+      "ClientName": "TechCorp",
+      "ClientType": "Corporation",
+      "Complexity": 10,
+      "MinProfit": 1000,
+      "Duration": 8,
+      "Problem": "Співробітники скаржаться на вигорання та хаос у завданнях.",
+      "CorrectAnswer": "Впровадження Agile-методології та системи таск-менеджменту"
+    }
+  ]
+}

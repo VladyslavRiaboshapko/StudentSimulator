@@ -1,6 +1,6 @@
 namespace StudentSimulator.Works.Barista;
 
-public static class CourierRewardCalculator
+public static class BaristaRewardCalculator
 {
     public static Reward Calculate(Order order)
     {

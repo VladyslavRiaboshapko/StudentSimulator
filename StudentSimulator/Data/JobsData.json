@@ -3,26 +3,41 @@
     {   
         "Id": 1, 
         "Target": "Latte", 
+        "Clients": 48, 
+        "Duration": 5,
+        "CafeLevel": 2,
         "Actions": ["Grind", "Espresso", "Steam Milk", "Pour"] 
     },
     { 
         "Id": 2, 
-        "Target": "Americano", 
+        "Target": "Americano",
+        "Clients": 39, 
+        "Duration": 4,
+        "CafeLevel": 1, 
         "Actions": ["Grind", "Espresso", "Add Water"] 
     },
     {
       "Id": 3,
       "Target": "Cappuccino",
+      "Clients": 81, 
+      "Duration": 6,
+      "CafeLevel": 2,
       "Actions": ["Grind", "Espresso", "Steam Milk", "Foam Milk", "Pour"]
     },
     {
       "Id": 4,
       "Target": "Flat White",
+      "Clients": 22, 
+      "Duration": 4,
+      "CafeLevel": 3,
       "Actions": ["Grind", "Double Espresso", "Lightly Frosted Milk", "Pour"]
     },
     {
       "Id": 5,
       "Target": "Mocha",
+      "Clients": 34, 
+      "Duration": 7,
+      "CafeLevel": 2,
       "Actions": ["Grind", "Chocolate Syrup", "Espresso", "Steam Milk", "Whipped Cream"]
     }
   ],
@@ -100,7 +115,7 @@
       "Id": 1,
       "ClientName": "Ігор",
       "ClientType": "Student",
-      "Complexity": 3,
+      "Complexity": 2,
       "MinProfit": 50,
       "Duration": 2,
       "Problem": "Комп'ютер постійно перегрівається під час ігор.",
@@ -110,9 +125,9 @@
       "Id": 2,
       "ClientName": "Кав'ярня",
       "ClientType": "SmallBusiness",
-      "Complexity": 7,
+      "Complexity": 4,
       "MinProfit": 200,
-      "Duration": 4,
+      "Duration": 1,
       "Problem": "Клієнти заходять, дивляться меню і йдуть, нічого не купуючи.",
       "CorrectAnswer": "Оптимізація цін та впровадження програми лояльності"
     },
@@ -120,11 +135,31 @@
       "Id": 3,
       "ClientName": "TechCorp",
       "ClientType": "Corporation",
-      "Complexity": 10,
+      "Complexity": 8,
       "MinProfit": 1000,
-      "Duration": 8,
+      "Duration": 3,
       "Problem": "Співробітники скаржаться на вигорання та хаос у завданнях.",
       "CorrectAnswer": "Впровадження Agile-методології та системи таск-менеджменту"
+    }
+  ],
+  "ConstructionAssistant": [
+    {
+      "Id": 1,
+      "Name": "Зведення паркану",
+      "Duration": 3,
+      "DifficultyLevel": 2
+    },
+    {
+      "Id": 2,
+      "Name": "Заливка фундаменту",
+      "Duration": 6,
+      "DifficultyLevel": 5
+    },
+    {
+      "Id": 3,
+      "Name": "Монтаж даху",
+      "Duration": 10,
+      "DifficultyLevel": 8
     }
   ]
 }

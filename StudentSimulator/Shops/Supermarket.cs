@@ -16,4 +16,13 @@ public class Supermarket
         Name = name;
         ProductRange = productRange;
     }
+
+    public void ShowProducts()
+    {
+        Console.WriteLine($"\n--- Вітаємо у {Name} ---");
+        foreach (var product in ProductRange)
+        {
+            Console.WriteLine($"ID: {product.Key.Id} | {product.Key.Name} | Ціна: {product.Value}грн");
+        }
+    }
 }

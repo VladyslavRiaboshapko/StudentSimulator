@@ -12,6 +12,6 @@ public static class JobMultipliers
     public const double ConstructionAssistentStamina = 2.1;
     public const double ConsultantStamina = 3;
     public const double Lose = 0.3;
-    public const double LoaderStamina = 0.085;
-    public const double LoaderMood = 0.42;
+    public const double LoaderStamina = 0.14;
+    public const double LoaderMood = 0.11;
 }

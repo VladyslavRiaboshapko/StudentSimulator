@@ -3,7 +3,7 @@ using StudentSimulator.Domain.Interfaces;
 namespace StudentSimulator.Items.Drinks;
 public abstract class BaseDrink : IItem
 {
-    public int Id {get;}
+    public int Id {get; set;}
     public string Name {get; set;}
     public int MaxStack {get; set;}
     public double Liters {get; set;}

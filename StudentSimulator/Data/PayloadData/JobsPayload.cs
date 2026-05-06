@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using StudentSimulator.Works.Consultant;
+
 namespace StudentSimulator.Data.PayloadData;
 public struct BaristaSession
 {
@@ -24,8 +27,16 @@ public struct CourierSession
 public struct ConsultantSession
 {
     public string ClientName;
-    public string ClientType;
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public ClientType ClientType;
     public string ProblemDescription;
     public string[] Options; 
     public string CorrectAnswer;
+}
+
+public struct ConstructionSession
+{
+    public string TaskName;
+    public int NailsToHit;
+    public int SpeedMs; 
 }

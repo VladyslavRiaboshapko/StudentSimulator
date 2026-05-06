@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using StudentSimulator.Data.PayloadData;
 using StudentSimulator.Works.FoodCourier;
 using StudentSimulator.Works.Consultant;
@@ -20,9 +21,14 @@ public class JobsRepository
     {
         var jobArray = _data.RootElement.GetProperty(jobName);
         int randomIndex = _rng.Next(jobArray.GetArrayLength());
+
+        var options = new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() }
+        };
         
         string taskJson = jobArray[randomIndex].GetRawText();
-        return JsonSerializer.Deserialize<T>(taskJson);
+        return JsonSerializer.Deserialize<T>(taskJson, options);
     }
 
     public BaristaSession PrepareBaristaSession(int taskId)
@@ -109,7 +115,7 @@ public class JobsRepository
         return new ConsultantSession
         {
             ClientName = data.ClientName,
-            ClientType = data.ClientType.ToString(),
+            ClientType = data.ClientType,
             ProblemDescription = problem,
             Options = options,
             CorrectAnswer = correct

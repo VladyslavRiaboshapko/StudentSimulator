@@ -19,13 +19,13 @@ namespace StudentSimulator.Domain.Core.User.Characteristics
             {
                 throw new ArgumentException("Значення не може бути менше 0!");
             }
-            if(Value + value < MaxValue)
+            if(Value >= MaxValue)
             {
-                Value += value;
-                return true;
+                return false;
             }
 
-            return false;
+            Value = Math.Min(Value + value, MaxValue);
+            return true;
         }
 
         public bool DecreaseValue(double value)
@@ -35,13 +35,13 @@ namespace StudentSimulator.Domain.Core.User.Characteristics
                 throw new ArgumentException("Значення не може бути менше 0!");
             }
 
-            if(Value - value > MinValue)
+            if (Value <= MinValue)
             {
-                Value -= value;
-                return true;
+                return false;
             }
 
-            return false;
+            Value = Math.Max(Value - value, MinValue);
+            return true;
         }
     }
 }

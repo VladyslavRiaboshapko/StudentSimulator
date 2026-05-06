@@ -24,7 +24,8 @@ public static class ConsultantRewardCalculator
             break;
         }
 
-        bool isSuccess = SuccessRandomizer.IsSuccess(session.Complexity / 10);
+        double chance = 80 - (session.Complexity * 5);
+        bool isSuccess = SuccessRandomizer.IsSuccess(chance);
 
         if(isSuccess)
         {

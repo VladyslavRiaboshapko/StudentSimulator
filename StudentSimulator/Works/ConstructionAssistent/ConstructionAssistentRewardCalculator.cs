@@ -2,7 +2,7 @@ namespace StudentSimulator.Works.ConstructionAssistent;
 
 public static class ConstructionAssistentRewardCalculator
 {
-    public static Reward Calculate(Task task)
+    public static Reward Calculate(ConstructionTask task)
     {
         double money = task.Duration * task.DifficultyLevel * JobMultipliers.ConstructionAssistent;
         double stamina = task.Duration * task.DifficultyLevel * JobMultipliers.ConstructionAssistentStamina;

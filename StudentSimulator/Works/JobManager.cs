@@ -3,11 +3,12 @@ using StudentSimulator.Works.Barista;
 using StudentSimulator.Works.Loader;
 using StudentSimulator.Works.FoodCourier;
 using StudentSimulator.Works.Consultant;
+using StudentSimulator.Works.ConstructionAssistent;
 using StudentSimulator.Works;
 using StudentSimulator.Works.Repo;
 using StudentSimulator.Domain.Core.User;
 
-namespace StudentSimulator.Managers
+namespace StudentSimulator.Works
 {
     public class JobManager
     {
@@ -65,7 +66,7 @@ namespace StudentSimulator.Managers
             ApplyRewardToPlayer(result);
         }
 
-        public void StartCourierJob()
+        public void StartFoodCourierJob()
         {
             
             DeliveryOrder order = _repository.GetRandomTask<DeliveryOrder>("FoodCourier");
@@ -107,18 +108,51 @@ namespace StudentSimulator.Managers
             ApplyRewardToPlayer(result);
         }
 
+        public void StartConstructionJob()
+        {
+            var taskData = _repository.GetRandomTask<ConstructionTask>("ConstructionAssistant");
+
+            var session = new ConstructionSession
+            {
+                TaskName = taskData.Name,
+                NailsToHit = taskData.Duration * 2,
+                SpeedMs = taskData.DifficultyLevel
+            };
+
+            Reward result = _engine.RunJob<ConstructionTask, ConstructionSession>(
+                session,
+                taskData,
+                ConstructionAssistantGame.Play,
+                ConstructionAssistentRewardCalculator.Calculate
+            );
+
+            ApplyRewardToPlayer(result);
+        }
+
 
         private void ApplyRewardToPlayer(Reward reward)
         {
             if (_user.Stamina.Value < reward.Stamina)
             {
-                Console.WriteLine("Ви занадто виснажені! Робота виконана жахливо.");
+                Console.WriteLine("Ви занадто виснажені!");
                 _user.Mood.DecreaseValue(20); 
             }
 
+            if (reward.Stamina > 0)
+            {
+                _user.Stamina.DecreaseValue(reward.Stamina);
+            }
+
+            if (reward.Mood > 0)
+            {
+                _user.Mood.DecreaseValue(reward.Mood);
+            }
+            else
+            {
+                _user.Mood.IncreaseValue(Math.Abs(reward.Mood));
+            }
+
             _user.Money.IncreaseValue(reward.Money);
-            _user.Stamina.DecreaseValue(reward.Stamina);
-            _user.Mood.DecreaseValue(reward.Mood);
 
             Console.WriteLine("\n--- ХАРАКТЕРИСТИКИ ОНОВЛЕНО ---");
             Console.WriteLine($"Гроші: {_user.Money.Value} | Стаміна: {_user.Stamina.Value} | Настрій: {_user.Mood.Value}");

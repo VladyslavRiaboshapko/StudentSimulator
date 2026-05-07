@@ -1,5 +1,6 @@
 using System;
 using StudentSimulator.Domain.Core.User.Characteristics;
+using StudentSimulator.Domain.Core.UserInventory;
 namespace StudentSimulator.Domain.Core.User
 {
     public class User
@@ -15,6 +16,7 @@ namespace StudentSimulator.Domain.Core.User
         public Characteristic WaterLevel {get;} = new(2, 2, 0);
         public Characteristic EatLevel {get;} = new(2, 2, 0);
         public Characteristic Stamina {get;} = new(100, 100, 0);
+        public Inventory UserInventory {get;} = new(5);
 
         public User(string name, string gender, double weight, double height)
         {

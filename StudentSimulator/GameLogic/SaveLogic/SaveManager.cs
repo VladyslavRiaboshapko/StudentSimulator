@@ -6,12 +6,14 @@ namespace StudentSimulator.GameLogic.SaveLogic;
 
 public class SaveManager
 {
-    private readonly string _savePath = "../../Data/Save.json";
+    private readonly string _savePath = "Data/Save.json";
     
     private readonly JsonSerializerOptions _options = new()
     {
         WriteIndented = true,
         Converters = { new JsonStringEnumConverter() },
+        IncludeFields = true, 
+        PropertyNameCaseInsensitive = true 
     };
 
     public void Save(GameState state)

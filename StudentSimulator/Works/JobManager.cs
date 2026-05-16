@@ -23,6 +23,7 @@ namespace StudentSimulator.Works
             _user = user;
         }
 
+    
         public void StartBaristaJob()
         {
             Order baristaOrder = _repository.GetRandomTask<Order>("Barista");

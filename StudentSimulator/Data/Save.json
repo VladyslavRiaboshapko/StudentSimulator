@@ -1,0 +1,44 @@
+{
+  "Player": {
+    "Id": 7,
+    "Name": "\u0421\u0442\u0443\u0434\u0435\u043D\u0442",
+    "Gender": "\u0427",
+    "Weight": 75,
+    "Height": 180,
+    "Health": {
+      "Value": 100,
+      "MaxValue": 100,
+      "MinValue": 0
+    },
+    "Money": {
+      "Value": 24085,
+      "MaxValue": 1.7976931348623157E+308,
+      "MinValue": 0
+    },
+    "Mood": {
+      "Value": 100,
+      "MaxValue": 100,
+      "MinValue": 0
+    },
+    "WaterLevel": {
+      "Value": 1,
+      "MaxValue": 2,
+      "MinValue": 0
+    },
+    "EatLevel": {
+      "Value": 1,
+      "MaxValue": 2,
+      "MinValue": 0
+    },
+    "Stamina": {
+      "Value": 100,
+      "MaxValue": 100,
+      "MinValue": 0
+    },
+    "UserInventory": {
+      "Capacity": 0,
+      "Slots": []
+    }
+  },
+  "CurrentDay": 3
+}

@@ -1,11 +1,14 @@
+using System.Text.Json.Serialization;
 using StudentSimulator.Domain.Interfaces;
 
 namespace StudentSimulator.Domain.Core.UserInventory;
 
 public class Inventory
 {
+    public int Capacity { get; private set; }
     public List<Slot> Slots {get;} = new();
 
+    [JsonConstructor]
     public Inventory(int capacity = 5)
     {
         for (int i = 0; i < capacity; i++)

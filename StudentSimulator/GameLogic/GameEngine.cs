@@ -7,6 +7,9 @@ using StudentSimulator.Works.Repo;
 using StudentSimulator.Domain.Interfaces;
 using StudentSimulator.Items.Drinks;
 using StudentSimulator.Items.Foods;
+using StudentSimulator.University.Practises;
+using StudentSimulator.University.Exams;
+using StudentSimulator.University.Lectures;
 
 namespace StudentSimulator.GameLogic;
 
@@ -111,23 +114,37 @@ public class GameEngine
         Console.Write("\nВведіть ID товару для покупки: ");
 
         string input = GetInput();
-        if (input == "0" || input == "/back") return;
+        if (input == "0" || input == "/back")
+        {
+            return;
+        }
 
         if (int.TryParse(input, out int itemId))
         {
-            var entry = _supermarket.ProductRange.FirstOrDefault(x => x.Key.Id == itemId);
-            
-            if (entry.Key != null)
-            {
-                IItem item = entry.Key;
-                int price = entry.Value;
+            IItem itemToBuy = null;
+            int price = 0;
+            bool itemFound = false;
 
+           
+            foreach (var pair in _supermarket.ProductRange)
+            {
+                if (pair.Key.Id == itemId)
+                {
+                    itemToBuy = pair.Key;
+                    price = pair.Value;
+                    itemFound = true;
+                    break; 
+                }
+            }
+
+            if (itemFound)
+            {
                 if (_state.Player.Money.Value >= price)
                 {
                     if (_state.Player.Money.DecreaseValue(price))
                     {
-                        _state.Player.UserInventory.AddItem(item, 1);
-                        Console.WriteLine($"\n[Успіх] Ви купили {item.Name}!");
+                        _state.Player.UserInventory.AddItem(itemToBuy, 1);
+                        Console.WriteLine($"\n[Успіх] Ви купили {itemToBuy.Name} за {price}грн!");
                     }
                 }
                 else
@@ -206,24 +223,229 @@ public class GameEngine
         switch (choice)
         {
             case "1": 
-            case "2": StartPractise(); break;
-            case "3": StartExam(); break;
+            AttendLecture();
+            break;
+            case "2": 
+            StartPractise(); 
+            break;
+            case "3": 
+            StartExam(); 
+            break;
+        }
+    }
+
+    private void StartPractise()
+    {
+        Console.WriteLine("\nОберіть назву предмету із списку та номер практичної від 1 до 10: ");
+        Console.WriteLine("1. Алгоритми та структури даних");
+        Console.WriteLine("2. Англійська");
+        Console.WriteLine("3. Математика");
+        Console.WriteLine("4. Програмування");
+        Console.WriteLine("5. Фізика");
+        Console.WriteLine("6. Хімія");
+        Console.WriteLine("7. Переглянути список практик");
+        Console.WriteLine("0. Назад");
+
+        Console.Write("\nОберіть дію або номер предмету: ");
+
+        string input = GetInput(); 
+
+        if (input == "0" || input == "/back")
+        {
+            return;
+        }
+        
+        if (input == "7")
+        {
+            ShowPractisesList();
+            return;
+        }
+
+        if (_state.Player.Stamina.Value < 20)
+        {
+            Console.WriteLine("\n[Помилка] Ви занадто втомлені! Треба відпочити або випити кави.");
+            Console.ReadKey();
+            return;
+        }
+
+        Console.Write("\nНомер практичної: ");
+        int practiseNumber = Convert.ToInt32(Console.ReadLine());
+
+        string subjectName = "";
+        switch (input)
+        {
+            case "1": 
+            subjectName = "ADS"; 
+            break;
+            case "2": 
+            subjectName = "English"; 
+            break;
+            case "3": 
+            subjectName = "Math"; 
+            break;
+            case "4": 
+            subjectName = "Programming"; 
+            break;
+            case "5": 
+            subjectName = "Physic"; 
+            break;
+            case "6": 
+            subjectName = "Chemistry"; 
+            break;
+            default:
+                Console.WriteLine("Невірна назва предмету!");
+                Console.ReadKey();
+                return;
+        }
+
+        PractiseEngine.RunPractise(subjectName, practiseNumber);
+    }
+
+    private void StartExam()
+    {
+        Console.WriteLine("\nОберіть назву предмету із списку: ");
+        Console.WriteLine("1. Алгоритми та структури даних");
+        Console.WriteLine("2. Англійська");
+        Console.WriteLine("3. Математика");
+        Console.WriteLine("4. Програмування");
+        Console.WriteLine("5. Фізика");
+        Console.WriteLine("6. Хімія");
+
+        string input = Console.ReadLine();
+
+        string subjectName = "";
+
+        switch(input)
+        {
+            case "1":
+            subjectName = "ADS";
+            break;
+            case "2":
+            subjectName = "English";
+            break;
+            case "3":
+            subjectName = "Math";
+            break;
+            case "4":
+            subjectName = "Programming";
+            break;
+            case "5":
+            subjectName = "Physic";
+            break;
+            case "6":
+            subjectName = "Chemistry";
+            break;
+            default:
+            Console.WriteLine("Невірне значення!");
+            Console.ReadKey();
+            return;
+        }
+
+        List<PractisesPayload> practises = PractiseEngine.LoadPractisesData();
+
+        int c = 0;
+
+        for(int i = 0; i < practises.Count; i++)
+        {
+            if(practises[i].Name == subjectName && practises[i].IsPassed == true)
+            {
+                c++;
+            } 
+        }
+
+        if(c == 10)
+        {
+            Exam.RunExam(subjectName);
+        }
+        else
+        {
+            Console.WriteLine($"\n[ВІДМОВЛЕНО В ДОПУСКУ] Ви здали лише {c} із 10 практик.");
+            Console.WriteLine("Вам залишилося пройти такі практичні роботи з цього предмету:");
+            for (int i = 0; i < practises.Count; i++)
+            {
+                if (practises[i].Name == subjectName && practises[i].IsPassed == false)
+                {
+                    Console.WriteLine($" ❌ Практична робота №{practises[i].Number}");
+                }
+            }
+            Console.WriteLine("\nНатисніть будь-яку клавішу...");
+            Console.ReadKey();
         }
     }
 
     private void AttendLecture()
     {
-        if (_state.Player.Stamina.Value >= 15)
+        Console.WriteLine("\nОберіть назву предмету із списку та номер лекції від 1 до 10: ");
+        Console.WriteLine("1. Алгоритми та структури даних");
+        Console.WriteLine("2. Англійська");
+        Console.WriteLine("3. Математика");
+        Console.WriteLine("4. Програмування");
+        Console.WriteLine("5. Фізика");
+        Console.WriteLine("6. Хімія");
+
+        Console.Write("\nНомер предмету: ");
+        string input = GetInput();
+        if (input == "0" || input == "/back") return;
+
+        if (_state.Player.Stamina.Value < 10)
         {
-            _state.Player.Stamina.DecreaseValue(15);
-            _state.Player.Mood.DecreaseValue(5);
-            
-            Console.WriteLine("\nЛекція була нудною, але корисною. Знання отримано!");
+            Console.WriteLine("\n[Помилка] Ви занадто виснажені, щоб слухати лекцію. Спіть або їжте!");
+            Console.ReadKey();
+            return;
         }
-        else
+
+        Console.Write("Номер лекції (1-10): ");
+        string numInput = GetInput();
+        if (numInput == "/back") return;
+        int lectureNumber = Convert.ToInt32(numInput);
+
+        string subjectName = "";
+        switch (input)
         {
-            Console.WriteLine("\nВи занадто втомлені для лекцій.");
+            case "1": subjectName = "ADS"; 
+            break;
+            case "2": subjectName = "English"; 
+            break;
+            case "3": subjectName = "Math"; 
+            break;
+            case "4": subjectName = "Programming"; 
+            break;
+            case "5": subjectName = "Physic"; 
+            break;
+            case "6": subjectName = "Chemistry"; 
+            break;
+            default:
+                Console.WriteLine("Невірна назва предмету або номер!");
+                Console.ReadKey();
+                return;
         }
+
+        _state.Player.Stamina.DecreaseValue(10);
+        _state.Player.EatLevel.DecreaseValue(0.2);
+        _state.Player.WaterLevel.DecreaseValue(0.2);
+
+        Lecture.PrintLecture(subjectName, lectureNumber);
+        Console.WriteLine("\nНатисніть будь-яку клавішу для повернення до меню дій...");
+        Console.ReadKey();
+    }
+
+    private void ShowPractisesList()
+    {
+        Console.Clear();
+        Console.WriteLine("=== СПИСОК ВСІХ ПРАКТИЧНИХ РОБІТ ===");
+        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine($"| {"Предмет",-15} | {"Номер",-5} | {"Статус",-10} |");
+        Console.WriteLine("----------------------------------------------------");
+
+        List<PractisesPayload> practises = PractiseEngine.LoadPractisesData();
+        
+        for (int i = 0; i < practises.Count; i++)
+        {
+            string status = practises[i].IsPassed ? "Пройдено" : "❌ НІ";
+            Console.WriteLine($"| {practises[i].Name,-15} | {practises[i].Number,-5} | {status,-10} |");
+        }
+        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine("\nНатисніть будь-яку клавішу для повернення...");
         Console.ReadKey();
     }
     private void OpenInventory()
@@ -241,7 +463,10 @@ public class GameEngine
 
         for (int i = 0; i < slots.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {slots[i].Item.Name} (Кількість: {slots[i].Amount})");
+            if (slots[i].Amount > 0 && slots[i].Item != null)
+            {
+                Console.WriteLine($"{i + 1}. {slots[i].Item.Name} (Кількість: {slots[i].Amount})");
+            }
         }
 
         Console.WriteLine("\n[0] Назад | Оберіть номер предмета, щоб використати його:");
@@ -257,18 +482,25 @@ public class GameEngine
 
     private void UseItem(IItem item)
     {
-        if (item is CoffeineDrink coffee)
+        if (item is Food food)
         {
-            _state.Player.Stamina.IncreaseValue(coffee.Stamina);
+            _state.Player.EatLevel.IncreaseValue(food.Kilograms); 
+            _state.Player.Health.IncreaseValue(5);   
+            Console.WriteLine($"\n[ІНВЕНТАР] Ви з'їли {food.Name}. Рівень голоду покращено на {food.Kilograms}");
+        }
+    
+        else if (item is CoffeineDrink coffee)
+        {
+            _state.Player.WaterLevel.IncreaseValue(coffee.Liters);   
+            _state.Player.Stamina.IncreaseValue(coffee.Stamina); 
             _state.Player.Mood.IncreaseValue(10);
-            Console.WriteLine($"\nВи випили {coffee.Name}. Стаміна відновлена на {coffee.Stamina}!");
+            Console.WriteLine($"\n[ІНВЕНТАР] Ви випили {coffee.Name}. Спрагу вгамовано! Стаміна +{coffee.Stamina}, Настрій покращено.");
         }
-        else if (item is Food food)
+
+        else if (item is BaseDrink drink) 
         {
-            _state.Player.EatLevel.IncreaseValue(1.0);
-            _state.Player.Health.IncreaseValue(5);
-            Console.WriteLine($"\nВи з'їли {food.Name}. Рівень голоду покращено!");
+            _state.Player.WaterLevel.IncreaseValue(drink.Liters); 
+            Console.WriteLine($"\n[ІНВЕНТАР] Ви випили {drink.Name}. Спрагу успішно вгамовано! (Об'єм: {drink.Liters}л)");
         }
-        Console.ReadKey();
     }
 }

@@ -11,7 +11,7 @@
       "MinValue": 0
     },
     "Money": {
-      "Value": 24085,
+      "Value": 300,
       "MaxValue": 1.7976931348623157E+308,
       "MinValue": 0
     },
@@ -21,12 +21,12 @@
       "MinValue": 0
     },
     "WaterLevel": {
-      "Value": 1,
+      "Value": 2,
       "MaxValue": 2,
       "MinValue": 0
     },
     "EatLevel": {
-      "Value": 1,
+      "Value": 2,
       "MaxValue": 2,
       "MinValue": 0
     },
@@ -36,9 +36,30 @@
       "MinValue": 0
     },
     "UserInventory": {
-      "Capacity": 0,
-      "Slots": []
+      "Capacity": 5,
+      "Slots": [
+        {
+          "Item": null,
+          "Amount": 0
+        },
+        {
+          "Item": null,
+          "Amount": 0
+        },
+        {
+          "Item": null,
+          "Amount": 0
+        },
+        {
+          "Item": null,
+          "Amount": 0
+        },
+        {
+          "Item": null,
+          "Amount": 0
+        }
+      ]
     }
   },
-  "CurrentDay": 3
+  "CurrentDay": 1
 }

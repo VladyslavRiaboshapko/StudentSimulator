@@ -16,7 +16,7 @@ namespace StudentSimulator.Domain.Core.User
         public Characteristic WaterLevel {get; set;} = new(2, 2, 0);
         public Characteristic EatLevel {get; set;} = new(2, 2, 0);
         public Characteristic Stamina {get; set;} = new(100, 100, 0);
-        public Inventory UserInventory {get; set;} = new(5);
+        public Inventory UserInventory {get; set;} = new();
 
         public User(string name, string gender, double weight, double height)
         {

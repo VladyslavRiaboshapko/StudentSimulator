@@ -27,6 +27,9 @@ namespace StudentSimulator.Works
                 Console.WriteLine($"Успіх! Ви заробили: {totalReward.Money}грн");
             }
 
+            Console.WriteLine("\nНатисніть будь-яку клавішу, щоб забрати гроші та повернутися в меню дій...");
+            Console.ReadKey();
+
             return totalReward;
         }
     }

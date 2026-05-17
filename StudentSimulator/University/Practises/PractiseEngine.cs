@@ -37,10 +37,21 @@ namespace StudentSimulator.University.Practises
                 practiseData.IsPassed = true;
                 UpdatePractiseData(practiseData);
             }
+
+            Console.WriteLine("\nНатисніть будь-яку клавішу, щоб повернутися...");
+            Console.ReadKey();
         }
 
         private static void RunInteractive(List<string> interectiveArgs)
         {
+            if (interectiveArgs == null || interectiveArgs.Count == 0)
+            {
+                Console.WriteLine("\nІнтерактивна частина для цієї практики відсутня або не налаштована!");
+                Console.WriteLine("Натисніть будь-яку клавішу для завершення практики...");
+                Console.ReadKey();
+                return; 
+            }
+
             switch(interectiveArgs[0])
             {
                 case "BinarySearch":
@@ -222,7 +233,7 @@ namespace StudentSimulator.University.Practises
                     string? rawInput = Console.ReadLine();
                     if (rawInput == null) break;
 
-                    // Використовуємо власну логіку порівняння
+    
                     if (IsPhysicsAnswerCorrect(rawInput, correctValueStr))
                     {
                         Console.WriteLine("✅ Правильно! Калібрування системи завершено успішно.");
@@ -397,7 +408,7 @@ namespace StudentSimulator.University.Practises
             throw new ArgumentException("There is no practise with that name or number!");
         }
 
-        private static List<PractisesPayload> LoadPractisesData()
+        public static List<PractisesPayload> LoadPractisesData()
         {
             string text = File.ReadAllText("Data/PractisesData.json");
             List<PractisesPayload> practiseData = JsonSerializer.Deserialize<List<PractisesPayload>>(text, new JsonSerializerOptions {WriteIndented = true});

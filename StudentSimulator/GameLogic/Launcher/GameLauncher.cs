@@ -55,7 +55,31 @@ public class GameLauncher
             return;
         }
 
+        
+        string examsTemplate = "Data/Templates/ExamsData.json";
+        string practiseTemplate = "Data/Templates/PractisesData.json";
+
+        string examsActive = "Data/ExamsData.json";
+        string practiseActive = "Data/PractisesData.json";
+
+        
+        if (File.Exists(examsTemplate) && File.Exists(practiseTemplate))
+        {
+            File.Copy(examsTemplate, examsActive, true);
+            File.Copy(practiseTemplate, practiseActive, true);
+            
+            Console.WriteLine("[Система] Навчальний прогрес успішно скинуто до початкового стану.");
+        }
+        else
+        {
+            Console.WriteLine("[Попередження] Не знайдено файли шаблонів у папці Templates! Гра почнеться зі старими практиками.");
+            Console.ReadKey();
+        }
+        
+        
+
         User newUser = new User("Студент", "Ч", 75, 180);
+        newUser.UserInventory.InitializeEmptySlots(5);
         GameState newState = new GameState(newUser, 1);
         _saveManager.Save(newState);
 

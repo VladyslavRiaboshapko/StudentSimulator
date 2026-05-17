@@ -6,11 +6,17 @@ namespace StudentSimulator.Domain.Core.UserInventory;
 public class Inventory
 {
     public int Capacity { get; private set; }
-    public List<Slot> Slots {get;} = new();
+    public List<Slot> Slots {get; set;} = new();
+
 
     [JsonConstructor]
-    public Inventory(int capacity = 5)
+    public Inventory()
     {
+    }
+    public void InitializeEmptySlots(int capacity = 5)
+    {
+        Capacity = capacity;
+        Slots.Clear();
         for (int i = 0; i < capacity; i++)
         {
             Slots.Add(new Slot());
@@ -23,9 +29,7 @@ public class Inventory
 
         for (int i = 0; i < Slots.Count; i++)
         {
-            var slot = Slots[i];
-
-            if (Slots[i].Amount > 0 && Slots[i].Item.Id == item.Id && Slots[i].Amount < item.MaxStack)
+            if (Slots[i].Amount > 0 && Slots[i].Item != null && Slots[i].Item.Id == item.Id && Slots[i].Amount < item.MaxStack)
             {
                 int canAdd = item.MaxStack - Slots[i].Amount;
                 int toAdd = (remaining > canAdd) ? canAdd : remaining;
@@ -48,10 +52,11 @@ public class Inventory
                 
                 Slots[i].AddItem(item, toAdd);
                 remaining -= toAdd;
-            }
-            if (remaining <= 0)
-            {
-                return true;
+                
+                if (remaining <= 0)
+                {
+                    return true;
+                }
             }
         }
 

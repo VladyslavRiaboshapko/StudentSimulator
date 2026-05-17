@@ -23,11 +23,25 @@ public class GameLauncher
 
             switch (choice)
             {
-                case "1": ContinueGame(); break;
-                case "2": StartNewGame(); break;
-                case "3": ShowManual(); break;
-                case "4": ExitProgram(); return;
-                default: Console.WriteLine("Невірний ввід!"); break;
+                case "1": 
+                ContinueGame(); 
+                break;
+
+                case "2": 
+                StartNewGame(); 
+                break;
+
+                case "3": 
+                ShowManual(); 
+                break;
+
+                case "4": 
+                ExitProgram(); 
+                return;
+
+                default: 
+                Console.WriteLine("Невірний ввід!"); 
+                break;
             }
         }
     }
@@ -50,11 +64,11 @@ public class GameLauncher
     private void StartNewGame()
     {
         Console.WriteLine("Ви впевнені? Весь прогрес буде видалено! (y/n)");
+
         if (Console.ReadLine()?.ToLower() != "y")
         {
             return;
         }
-
         
         string examsTemplate = "Data/Templates/ExamsData.json";
         string practiseTemplate = "Data/Templates/PractisesData.json";
@@ -75,7 +89,6 @@ public class GameLauncher
             Console.WriteLine("[Попередження] Не знайдено файли шаблонів у папці Templates! Гра почнеться зі старими практиками.");
             Console.ReadKey();
         }
-        
         
 
         User newUser = new User("Студент", "Ч", 75, 180);

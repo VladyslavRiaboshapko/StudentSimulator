@@ -21,22 +21,22 @@
       "MinValue": 0
     },
     "WaterLevel": {
-      "Value": 2,
+      "Value": 1.8,
       "MaxValue": 2,
       "MinValue": 0
     },
     "EatLevel": {
-      "Value": 2,
+      "Value": 1.8,
       "MaxValue": 2,
       "MinValue": 0
     },
     "Stamina": {
-      "Value": 100,
+      "Value": 90,
       "MaxValue": 100,
       "MinValue": 0
     },
     "UserInventory": {
-      "Capacity": 5,
+      "Capacity": 0,
       "Slots": [
         {
           "Item": null,

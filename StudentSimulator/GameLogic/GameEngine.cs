@@ -3,7 +3,6 @@ using StudentSimulator.GameLogic.SaveLogic;
 using StudentSimulator.Works;
 using StudentSimulator.Exceptions;
 using StudentSimulator.Shops;
-using StudentSimulator.Works.Repo;
 using StudentSimulator.Domain.Interfaces;
 using StudentSimulator.Items.Drinks;
 using StudentSimulator.Items.Foods;
@@ -19,6 +18,16 @@ public class GameEngine
     private readonly SaveManager _saveManager;
     private readonly JobManager _jobManager;
     private readonly Supermarket _supermarket;
+
+    private static readonly Dictionary<string, string> Subjects = new()
+    {
+        { "1", "ADS" },
+        { "2", "English" },
+        { "3", "Math" },
+        { "4", "Programming" },
+        { "5", "Physic" },
+        { "6", "Chemistry" }
+    };
 
     public GameEngine(GameState state, SaveManager saveManager, JobManager jobManager)
     {
@@ -51,18 +60,23 @@ public class GameEngine
                     case "1": 
                     GoToUniversity(); 
                     break;
+
                     case "2": 
                     GoToWork(); 
                     break;
+
                     case "3": 
                     GoToShop(); 
                     break;
+
                     case "4": 
                     OpenInventory(); 
                     break;
+
                     case "5": 
                     FinishDay(); 
                     break;
+
                     default: 
                     Console.WriteLine("Невідома дія. Спробуйте ще раз."); 
                     break;
@@ -75,6 +89,11 @@ public class GameEngine
             {
                 return;
             }
+        }
+
+        catch (FormatException ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -114,6 +133,7 @@ public class GameEngine
         Console.Write("\nВведіть ID товару для покупки: ");
 
         string input = GetInput();
+
         if (input == "0" || input == "/back")
         {
             return;
@@ -144,12 +164,12 @@ public class GameEngine
                     if (_state.Player.Money.DecreaseValue(price))
                     {
                         _state.Player.UserInventory.AddItem(itemToBuy, 1);
-                        Console.WriteLine($"\n[Успіх] Ви купили {itemToBuy.Name} за {price}грн!");
+                        Console.WriteLine($"\nВи купили {itemToBuy.Name} за {price}грн!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("\n[Помилка] Недостатньо коштів!");
+                    Console.WriteLine("\nНедостатньо коштів!");
                 }
             }
             else
@@ -191,18 +211,23 @@ public class GameEngine
             case "1": 
             _jobManager.StartConsultantJob(); 
             break;
+
             case "2": 
             _jobManager.StartFoodCourierJob();
             break;
+
             case "3":
             _jobManager.StartLoaderJob();
             break;
+
             case "4":
             _jobManager.StartBaristaJob();
             break;
+
             case "5":
             _jobManager.StartConstructionJob();
             break;
+
             case "0": 
             return;
         }
@@ -220,14 +245,17 @@ public class GameEngine
         Console.WriteLine("0. Назад");
 
         string choice = GetInput();
+
         switch (choice)
         {
             case "1": 
             AttendLecture();
             break;
+
             case "2": 
             StartPractise(); 
             break;
+
             case "3": 
             StartExam(); 
             break;
@@ -263,7 +291,7 @@ public class GameEngine
 
         if (_state.Player.Stamina.Value < 20)
         {
-            Console.WriteLine("\n[Помилка] Ви занадто втомлені! Треба відпочити або випити кави.");
+            Console.WriteLine("\nВи занадто втомлені! Треба відпочити або випити кави.");
             Console.ReadKey();
             return;
         }
@@ -271,33 +299,8 @@ public class GameEngine
         Console.Write("\nНомер практичної: ");
         int practiseNumber = Convert.ToInt32(Console.ReadLine());
 
-        string subjectName = "";
-        switch (input)
-        {
-            case "1": 
-            subjectName = "ADS"; 
-            break;
-            case "2": 
-            subjectName = "English"; 
-            break;
-            case "3": 
-            subjectName = "Math"; 
-            break;
-            case "4": 
-            subjectName = "Programming"; 
-            break;
-            case "5": 
-            subjectName = "Physic"; 
-            break;
-            case "6": 
-            subjectName = "Chemistry"; 
-            break;
-            default:
-                Console.WriteLine("Невірна назва предмету!");
-                Console.ReadKey();
-                return;
-        }
-
+        string subjectName = Subjects[input];
+        
         PractiseEngine.RunPractise(subjectName, practiseNumber);
     }
 
@@ -313,33 +316,7 @@ public class GameEngine
 
         string input = Console.ReadLine();
 
-        string subjectName = "";
-
-        switch(input)
-        {
-            case "1":
-            subjectName = "ADS";
-            break;
-            case "2":
-            subjectName = "English";
-            break;
-            case "3":
-            subjectName = "Math";
-            break;
-            case "4":
-            subjectName = "Programming";
-            break;
-            case "5":
-            subjectName = "Physic";
-            break;
-            case "6":
-            subjectName = "Chemistry";
-            break;
-            default:
-            Console.WriteLine("Невірне значення!");
-            Console.ReadKey();
-            return;
-        }
+        string subjectName = Subjects[input];;
 
         List<PractisesPayload> practises = PractiseEngine.LoadPractisesData();
 
@@ -389,7 +366,7 @@ public class GameEngine
 
         if (_state.Player.Stamina.Value < 10)
         {
-            Console.WriteLine("\n[Помилка] Ви занадто виснажені, щоб слухати лекцію. Спіть або їжте!");
+            Console.WriteLine("\nВи занадто виснажені, щоб слухати лекцію. Спіть або їжте!");
             Console.ReadKey();
             return;
         }
@@ -399,26 +376,7 @@ public class GameEngine
         if (numInput == "/back") return;
         int lectureNumber = Convert.ToInt32(numInput);
 
-        string subjectName = "";
-        switch (input)
-        {
-            case "1": subjectName = "ADS"; 
-            break;
-            case "2": subjectName = "English"; 
-            break;
-            case "3": subjectName = "Math"; 
-            break;
-            case "4": subjectName = "Programming"; 
-            break;
-            case "5": subjectName = "Physic"; 
-            break;
-            case "6": subjectName = "Chemistry"; 
-            break;
-            default:
-                Console.WriteLine("Невірна назва предмету або номер!");
-                Console.ReadKey();
-                return;
-        }
+        string subjectName = Subjects[input];
 
         _state.Player.Stamina.DecreaseValue(10);
         _state.Player.EatLevel.DecreaseValue(0.2);
@@ -486,7 +444,7 @@ public class GameEngine
         {
             _state.Player.EatLevel.IncreaseValue(food.Kilograms); 
             _state.Player.Health.IncreaseValue(5);   
-            Console.WriteLine($"\n[ІНВЕНТАР] Ви з'їли {food.Name}. Рівень голоду покращено на {food.Kilograms}");
+            Console.WriteLine($"\nВи з'їли {food.Name}. Рівень голоду покращено на {food.Kilograms}");
         }
     
         else if (item is CoffeineDrink coffee)
@@ -494,13 +452,13 @@ public class GameEngine
             _state.Player.WaterLevel.IncreaseValue(coffee.Liters);   
             _state.Player.Stamina.IncreaseValue(coffee.Stamina); 
             _state.Player.Mood.IncreaseValue(10);
-            Console.WriteLine($"\n[ІНВЕНТАР] Ви випили {coffee.Name}. Спрагу вгамовано! Стаміна +{coffee.Stamina}, Настрій покращено.");
+            Console.WriteLine($"\nВи випили {coffee.Name}. Спрагу вгамовано! Стаміна +{coffee.Stamina}, Настрій покращено.");
         }
 
         else if (item is BaseDrink drink) 
         {
             _state.Player.WaterLevel.IncreaseValue(drink.Liters); 
-            Console.WriteLine($"\n[ІНВЕНТАР] Ви випили {drink.Name}. Спрагу успішно вгамовано! (Об'єм: {drink.Liters}л)");
+            Console.WriteLine($"\nВи випили {drink.Name}. Спрагу успішно вгамовано! (Об'єм: {drink.Liters}л)");
         }
     }
 }

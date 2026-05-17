@@ -49,7 +49,7 @@ public class JobsRepository
 
         if (!found)
         {
-            throw new ArgumentException($"Task with Id {taskId} not found in Barista jobs!");
+            throw new ArgumentException($"Завдання з ідентифікатором {taskId} не знайдено у списку завдань Barista!");
         }
 
         string targetDrink = selectedElement.GetProperty("Target").GetString();
@@ -158,6 +158,6 @@ public class JobsRepository
             }
         }
 
-        return "Property not found";
+        return "Об'єкт не знайдено";
     }
 }

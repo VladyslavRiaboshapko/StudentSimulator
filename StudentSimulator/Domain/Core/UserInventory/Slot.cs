@@ -25,7 +25,7 @@ public class Slot
     {
         if(count <= 0)
         {
-            throw new ArgumentException("Count shoud be greater than 0!");
+            throw new ArgumentException("Кількість повинна бути більше 0!");
         }
         if (Amount == 0)
         {
@@ -50,7 +50,7 @@ public class Slot
     {
         if (count == 0)
         {
-            throw new ArgumentException("Count shoud be greater than 0!");
+            throw new ArgumentException("Кількість повинна бути більше 0!");
         }
 
         if (Amount == 0)

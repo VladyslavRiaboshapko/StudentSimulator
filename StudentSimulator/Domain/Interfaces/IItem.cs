@@ -6,7 +6,7 @@ namespace StudentSimulator.Domain.Interfaces;
 
 [JsonDerivedType(typeof(Food), typeDiscriminator: "food")]
 [JsonDerivedType(typeof(StandartDrink), typeDiscriminator: "drink")]
-[JsonDerivedType(typeof(CoffeineDrink), typeDiscriminator: "coffee")]
+[JsonDerivedType(typeof(CoffeineDrink), typeDiscriminator: "cdrink")]
 public interface IItem
 {
     public int Id {get;}

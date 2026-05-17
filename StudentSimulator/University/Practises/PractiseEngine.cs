@@ -54,273 +54,169 @@ namespace StudentSimulator.University.Practises
 
             switch(interectiveArgs[0])
             {
-                case "BinarySearch":
+                
+                case "BinarySearch":        ExecuteSearchJob(interectiveArgs, Search.BinarySearch); break;
+                case "InterpolationSearch": ExecuteSearchJob(interectiveArgs, Search.InterpolationSearch); break;
+                case "ExponentialSearch":   ExecuteSearchJob(interectiveArgs, Search.ExponentialSearch); break;
+
+                
+                case "BubbleSort":    ExecuteSortJob(Sort.BubbleSort); break;
+                case "InsertionSort": ExecuteSortJob(Sort.InsertionSort); break;
+                case "CombSort":      ExecuteSortJob(Sort.CombSort); break;
+                case "BucketSort":    ExecuteSortJob(Sort.BucketSort); break;
+                case "MergeSort":     ExecuteSortJob(Sort.MergeSort); break;
+
+                
+                case "Recursion":          ExecuteRecursion(); break;
+                case "QuickSort":          ExecuteQuickSort(); break;
+                case "ChemicalConstructor":ExecuteChemicalConstructor(interectiveArgs); break;
+                case "PhysicsEngine":      ExecutePhysicsEngine(interectiveArgs); break;
+                case "SentenceBuilder":    ExecuteSentenceBuilder(interectiveArgs); break;
+                case "EquationSolver":     ExecuteEquationSolver(interectiveArgs); break;
+                case "CodeFixer":          ExecuteCodeFixer(interectiveArgs); break;
+            }
+        }
+
+        private static void ExecuteRecursion()
+        {
+            Console.WriteLine(": ");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(Recursion.Factorial(x));
+        }
+
+        private static void ExecuteQuickSort()
+        {
+            Console.WriteLine(": ");
+            int[] arr = WriteArray();
+
+            Console.WriteLine(": ");
+            int l = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(": ");
+            int r = Convert.ToInt32(Console.ReadLine());
+
+            arr = Sort.QuickSort(arr, l, r);
+            foreach(int i in arr) Console.Write($" {i}");
+            Console.WriteLine();
+        }
+
+        private static void ExecuteChemicalConstructor(List<string> args)
+        {
+            for(int i = 1; i < args.Count - 1; i++)
+            {
+                Console.Write($"{args[i]} ");
+            }
+            List<int> correctIndices = ParseCorrectIndices(args[args.Count - 1]);
+            Console.WriteLine("\nВведіть правильні відповіді: ");
+            
+            int count = 0;
+            int[] userInput = WriteArray();
+            for(int i = 0; i < correctIndices.Count; i++)
+            {
+                if (i < userInput.Length && correctIndices[i] == userInput[i]) count++;
+            }
+            
+            if(count == correctIndices.Count) Console.WriteLine("Молодець!");
+            else
+            {
+                Console.WriteLine("Неправильно!");
+                foreach(int i in correctIndices) Console.Write($"{i} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void ExecutePhysicsEngine(List<string> args)
+        {
+            string physicsVariable = args[1]; 
+            string correctValueStr = args[args.Count - 1];
+
+            Console.WriteLine($"\n--- Фізичний симулятор ---");
+            Console.WriteLine($"Завдання: Встановіть правильне значення для: {physicsVariable}");
+            Console.Write("Ваша відповідь: ");
+
+            string? rawInput = Console.ReadLine();
+            if (rawInput == null) return;
+
+            if (IsPhysicsAnswerCorrect(rawInput, correctValueStr))
+                Console.WriteLine("✅ Правильно! Калібрування системи завершено успішно.");
+            else
+                Console.WriteLine($"❌ Помилка! Система вийшла з ладу.\nПравильне значення: {correctValueStr}");
+        }
+
+        private static void ExecuteSentenceBuilder(List<string> args)
+        {
+            for (int i = 1; i < args.Count - 1; i++) Console.Write($"[{i}] {args[i]}  ");
+            Console.WriteLine("\nСкладіть речення, ввівши номери слів через пробіл:");
+
+            List<int> correctIndices = ParseCorrectIndices(args[args.Count - 1]);
+            int[] userInput = WriteArray();
+
+            int correctCount = 0;
+            if (userInput.Length == correctIndices.Count)
+            {
+                for (int i = 0; i < correctIndices.Count; i++)
                 {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    Console.WriteLine(": ");
-                    int target = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine(Search.BinarySearch(arr, target));
-                    break;
-                }
-
-                case "InterpolationSearch":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    Console.WriteLine(": ");
-                    int target = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine(Search.InterpolationSearch(arr, target));
-                    break;
-                }
-
-                case "ExponentialSearch":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    Console.WriteLine(": ");
-                    int target = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine(Search.ExponentialSearch(arr, target));
-                    break;
-                }
-
-                case "BubbleSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    arr = Sort.BubbleSort(arr);
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-
-                    break;
-                }
-
-                case "InsertionSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    arr = Sort.InsertionSort(arr);
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-                    
-                    break;
-                }
-
-                case "CombSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    arr = Sort.CombSort(arr);
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-                    
-                    break;
-                }
-
-                case "BucketSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    arr = Sort.BucketSort(arr);
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-                    
-                    break;
-                }
-
-                case "Recursion":
-                {
-                    Console.WriteLine(": ");
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine(Recursion.Factorial(x));
-                    
-                    break;
-                }
-
-                case "MergeSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    arr = Sort.MergeSort(arr);
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-
-                    break;
-                }
-
-                case "QuickSort":
-                {
-                    Console.WriteLine(": ");
-                    int[] arr = WriteArray();
-
-                    Console.WriteLine(": ");
-                    int l = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine(": ");
-                    int r = Convert.ToInt32(Console.ReadLine());
-
-                    arr = Sort.QuickSort(arr, l, r);
-
-                    foreach(int i in arr)
-                    {
-                        Console.Write($" {i}");
-                    }
-
-                    break;
-                }
-                case "ChemicalConstructor" :
-                {
-                    for(int i = 1; i < interectiveArgs.Count - 1; i++)
-                    {
-                        Console.Write($"{interectiveArgs[i]} ");
-                    }
-                    List<int> correctIndices = ParseCorrectIndices(interectiveArgs[interectiveArgs.Count - 1]);
-                    Console.WriteLine();
-                    Console.WriteLine("Введіть правильні відповіді: ");
-                    int count = 0;
-                    int[] userInput = WriteArray();
-                    for(int i = 0; i < correctIndices.Count; i++)
-                    {
-                        if (i < userInput.Length && correctIndices[i] == userInput[i])
-                        {
-                            count++;
-                        }
-                    }
-                    if(count == correctIndices.Count)
-                    {
-                        Console.WriteLine("Молодець!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Неправильно!");
-                        foreach(int i in correctIndices)
-                        {
-                            Console.Write($"{i} ");
-                        }
-                    }
-                    break;
-                }
-                case "PhysicsEngine":
-                {
-                    string physicsVariable = interectiveArgs[1]; 
-                    string correctValueStr = interectiveArgs[interectiveArgs.Count - 1];
-
-                    Console.WriteLine($"\n--- Фізичний симулятор ---");
-                    Console.WriteLine($"Завдання: Встановіть правильне значення для: {physicsVariable}");
-                    Console.Write("Ваша відповідь: ");
-
-                    string? rawInput = Console.ReadLine();
-                    if (rawInput == null) break;
-
-    
-                    if (IsPhysicsAnswerCorrect(rawInput, correctValueStr))
-                    {
-                        Console.WriteLine("✅ Правильно! Калібрування системи завершено успішно.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"❌ Помилка! Система вийшла з ладу.");
-                        Console.WriteLine($"Правильне значення мало бути: {correctValueStr}");
-                    }
-                    break;
-                }
-                case "SentenceBuilder":
-                {
-                    for (int i = 1; i < interectiveArgs.Count - 1; i++)
-                    {
-                        Console.Write($"[{i}] {interectiveArgs[i]}  ");
-                    }
-                    Console.WriteLine("\nСкладіть речення, ввівши номери слів через пробіл:");
-
-                    List<int> correctIndices = ParseCorrectIndices(interectiveArgs[interectiveArgs.Count - 1]);
-                    int[] userInput = WriteArray();
-
-                    int correctCount = 0;
-                    if (userInput.Length == correctIndices.Count)
-                    {
-                        for (int i = 0; i < correctIndices.Count; i++)
-                        {
-                            if (userInput[i] == correctIndices[i]) correctCount++;
-                        }
-                    }
-
-                    if (correctCount == correctIndices.Count)
-                    {
-                        Console.WriteLine("Perfect! Your grammar is correct.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect. Try to review the word order.");
-                    }
-                    break;
-                }
-                case "EquationSolver":
-                {
-                    string formula = interectiveArgs[1]; 
-                    string targetAnswer = interectiveArgs[interectiveArgs.Count - 1];
-
-                    Console.WriteLine($"\n--- Математичний практикум ---");
-                    Console.WriteLine($"Завдання: {formula}");
-                    Console.Write("Ваша відповідь: ");
-
-                    string? userInput = Console.ReadLine();
-                    if (userInput == null) break;
-
-                    if (IsPhysicsAnswerCorrect(userInput, targetAnswer))
-                    {
-                        Console.WriteLine("✅ Правильно! Обчислення вірні.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"❌ Помилка в розрахунках.");
-                        Console.WriteLine($"Правильна відповідь: {targetAnswer}");
-                    }
-                    break;
-                }
-                case "CodeFixer":
-                {
-                    string snippet = interectiveArgs[1]; 
-                    string targetToken = interectiveArgs[interectiveArgs.Count - 1];
-
-                    Console.WriteLine($"\n--- Programming Lab: Code Analysis ---");
-                    Console.WriteLine($"Code/Task: {snippet}");
-                    Console.Write("Your answer (keyword/value): ");
-
-                    string? userInput = Console.ReadLine();
-                    if (userInput == null) break;
-
-                    if (IsPhysicsAnswerCorrect(userInput.ToLower(), targetToken.ToLower()))
-                    {
-                        Console.WriteLine("✅ Correct! Logic verified.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"❌ Compilation Error. Expected: {targetToken}");
-                    }
-                    break;
+                    if (userInput[i] == correctIndices[i]) correctCount++;
                 }
             }
+
+            if (correctCount == correctIndices.Count) Console.WriteLine("Чудово! Ваша граматика бездоганна.");
+            else Console.WriteLine("Неправильно. Спробуйте переглянути порядок слів.");
+        }
+
+        private static void ExecuteEquationSolver(List<string> args)
+        {
+            string formula = args[1]; 
+            string targetAnswer = args[args.Count - 1];
+
+            Console.WriteLine($"\n--- Математичний практикум ---");
+            Console.WriteLine($"Завдання: {formula}");
+            Console.Write("Ваша відповідь: ");
+
+            string? userInput = Console.ReadLine();
+            if (userInput == null) return;
+
+            if (IsPhysicsAnswerCorrect(userInput, targetAnswer)) Console.WriteLine("✅ Правильно! Обчислення вірні.");
+            else Console.WriteLine($"❌ Помилка в розрахунках.\nПравильна відповідь: {targetAnswer}");
+        }
+
+        private static void ExecuteCodeFixer(List<string> args)
+        {
+            string snippet = args[1]; 
+            string targetToken = args[args.Count - 1];
+
+            Console.WriteLine($"\n--- Лабораторні заняття з програмування: Аналіз коду ---");
+            Console.WriteLine($"Code/Task: {snippet}");
+            Console.Write("Ваша відповідь (ключове слово/значення): ");
+
+            string? userInput = Console.ReadLine();
+            if (userInput == null) return;
+
+            if (IsPhysicsAnswerCorrect(userInput.ToLower(), targetToken.ToLower())) Console.WriteLine("✅ Правильно! Логіка перевірена.");
+            else Console.WriteLine($"❌ Помилка компіляції. Очікувалося: {targetToken}");
+        }
+
+        private static void ExecuteSearchJob(List<string> args, Func<int[], int, int> searchAlgorithm)
+        {
+            Console.WriteLine(": ");
+            int[] arr = WriteArray();
+
+            Console.WriteLine(": ");
+            int target = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine(searchAlgorithm(arr, target));
+        }
+
+        private static void ExecuteSortJob(Func<int[], int[]> sortAlgorithm)
+        {
+            Console.WriteLine(": ");
+            int[] arr = WriteArray();
+
+            arr = sortAlgorithm(arr);
+            foreach(int i in arr)
+            {
+                Console.Write($" {i}");
+            }
+            Console.WriteLine();
         }
 
         private static int[] WriteArray()
@@ -366,7 +262,7 @@ namespace StudentSimulator.University.Practises
         {
             if(correctAnswers < 0)
             {
-                throw new ArgumentException("Incorrect number of correct answers!");
+                throw new ArgumentException("Некоректне число правильних відповідей!");
             }
 
             if(practiseData.Questions.Count == correctAnswers)
@@ -405,7 +301,7 @@ namespace StudentSimulator.University.Practises
                 }
             }
 
-            throw new ArgumentException("There is no practise with that name or number!");
+            throw new ArgumentException("Практик із такою назвою чи номером не існує!");
         }
 
         public static List<PractisesPayload> LoadPractisesData()
@@ -439,25 +335,46 @@ namespace StudentSimulator.University.Practises
             int i = 0;
             int j = 0;
 
-            while (i < input.Length && input[i] == ' ') i++;
-            while (j < target.Length && target[j] == ' ') j++;
+            while (i < input.Length && input[i] == ' ')
+            {
+                i++;
+            }
+            while (j < target.Length && target[j] == ' ')
+            {
+                j++;
+            }
 
             while (i < input.Length && j < target.Length)
             {
                 char charInput = input[i];
                 char charTarget = target[j];
 
-                if (charInput == ',') charInput = '.';
-                if (charTarget == ',') charTarget = '.';
+                if (charInput == ',')
+                {
+                    charInput = '.';
+                }
+                if (charTarget == ',')
+                {
+                    charTarget = '.';
+                }
 
-                if (charInput != charTarget) return false;
+                if (charInput != charTarget)
+                {
+                    return false;
+                }
 
                 i++;
                 j++;
             }
 
-            while (i < input.Length && input[i] == ' ') i++;
-            while (j < target.Length && target[j] == ' ') j++;
+            while (i < input.Length && input[i] == ' ')
+            {
+                i++;
+            }
+            while (j < target.Length && target[j] == ' ')
+            {
+                j++;
+            }
 
             return i == input.Length && j == target.Length;
         }

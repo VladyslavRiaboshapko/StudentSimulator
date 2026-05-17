@@ -15,7 +15,7 @@ public static class ConstructionAssistantGame
         {
             
             int waitTime = rng.Next(500, 2000);
-            System.Threading.Thread.Sleep(waitTime);
+            Thread.Sleep(waitTime);
 
             Console.WriteLine("\nЗАРАЗ! (Тисни Enter!)");
             

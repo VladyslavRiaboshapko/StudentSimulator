@@ -9,7 +9,7 @@ namespace StudentSimulator.University.Lectures
         {
             if(num < 1 || num > 10)
             {
-                throw new ArgumentException("There is no lecture with that number!");
+                throw new ArgumentException("Лекції з таким номером не існує!");
             } 
 
             LecturesPayload lecture = LoadLecture(name, num);
@@ -29,7 +29,7 @@ namespace StudentSimulator.University.Lectures
                 }
             }
 
-            throw new ArgumentException("Load lecture is impossible!");
+            throw new ArgumentException("Неможливо завантажити лекцію!");
         }
     }
 }

@@ -55,7 +55,7 @@ namespace StudentSimulator.University.Exams
         {
             if(correctAnswers < 1)
             {
-                throw new ArgumentException("Incorrect number of correct answers!");
+                throw new ArgumentException("Некоректна кількість правильних відповідей!");
             }
 
             if(examsData.Questions.Count == correctAnswers)
@@ -78,7 +78,7 @@ namespace StudentSimulator.University.Exams
                 }
             }
 
-            throw new ArgumentException("There is no such exam!");
+            throw new ArgumentException("Такого іспиту не існує!");
         }
         
         private static List<ExamsPayload> LoadExams()
@@ -88,7 +88,7 @@ namespace StudentSimulator.University.Exams
 
             return exams;
 
-            throw new ArgumentException("Load exam is impossible!");
+            throw new ArgumentException("Неможливо завантажити іспит!");
         }
     }
 }
